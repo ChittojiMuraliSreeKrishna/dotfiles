@@ -1,4 +1,4 @@
-#types hexcodes
+# types hexcodes
 set $bg-color #000000
 set $inactive-bg-color #2f343f
 set $text-color   #f3f4f5
@@ -6,44 +6,42 @@ set $inactive-text-color #676E7D
 set $urgent-bg-color   #E53935
 
 set $terminal --no-startup-id konsole
-#________________________________________________________________________________________________________________Configs______________>
+set $browser --no-startup-id google-chrome-unstable
+# Configs
 set $mod Mod4
 set $alt Mod1
 font pango:monospace 10
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-exec_always --no-startup-id feh --bg-scale /home/wargun/Pictures/car.jpg
-exec_always picom
+execalways --no-startup-id feh --bg-scale /home/wargun/Pictures/spiderman.jpg
+execalways picom
 
-#_____________________________________________________________________________________________________________________________________>
-
-#_________________________________________________________________________________________________________________Media_______________>
-
-set $refresh_i3status killall -SIGUSR1 i3status
+# Media Brightness
+set $refreshi3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec amixer sset Master 2%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 2%-
 bindsym XF86AudioMute exec amixer sset Master toggle
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
-#_______________________________________music_____________________________________________________
-
+# music
 bindsym XF86AudioPlay exec  $terminal -e mocp -p
 bindsym XF86AudioNext exec  $terminal -e mocp --next
 bindsym XF86AudioPrev exec  $terminal -e mocp --prev
 bindsym $mod+XF86AudioPlay exec $terminal -e mocp -s
 
-#_____________________________________________________________________________________________________________________________________>
+# Workspaces
+set $ws1 "1: General"
+set $ws2 "2: Files"
+set $ws3 "3: Chrome"
+set $ws4 "4: Code"
+set $ws5 "5: Gimp"
+set $ws6 "6: Vlc"
+set $ws7 "7: office"
+set $ws8 "8: Mail"
+set $ws9 "9: camera"
+set $ws10 "10: Music"
 
-#______________________________________________________________________________________________________________Workspaces_____________>
-set $ws1 "1. General"
-set $ws2 "2. Files"
-set $ws3 "3. Chrome"
-set $ws4 "4. Code"
-set $ws5 "5. Gimp"
-set $ws6 "6. Vlc"
-set $ws7 "7. office"
-set $ws8 "8. Mail"
-set $ws9 "9. camera"
-set $ws10 "10. Music"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -69,15 +67,14 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-#default workspace
+# default workspace
 assign [class="Thunar"] $ws2
-assign [class="Google-chrome"] $ws3
+assign [class="Google-chrome-unstable"] $ws3
 assign [class="vlc"] $ws6
 assign [class="libreoffice-startcenter"] $ws7
-#_____________________________________________________________________________________________________________________________________>
 
-#_______________________________________________________________________________________________________________Keybindings___________>
-  #Keys #Tasks
+# Keybindings
+# Keys    # Tasks
 bindsym $alt+r mode "resize"
 bindsym $mod+Shift+r restart
 bindsym $mod+c reload
@@ -90,7 +87,7 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
+bindsym $mod+space focus modetoggle
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -98,44 +95,41 @@ bindsym $mod+Right focus right
 bindsym $alt+F4 kill
 bindsym $mod+Return exec $terminal
 bindsym $mod+d exec rofi -show drun -width 100 -theme Monokai
-bindsym $mod+l exec i3lock -i /home/wargun/Pictures/zoro.png -f -e
+bindsym $mod+l exec i3lock -i /home/wargun/Pictures/smile.png -f -e
 bindsym $alt+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+shift+t exec --no-startup-id thunar
+bindsym $mod+shift+c exec --no-startup-id $browser
+bindsym $mod+shift+v exec --no-startup-id code
 bindsym $mod+v exec --no-startup-id vlc
 bindsym $mod+shift+o exec --no-startup-id libreoffice
 bindsym $mod+Print exec --no-startup-id spectacle -f
-#_____________________________________________________________________________________________________________________________________>
 
-#_______________________________________________________________________________________________________________resize_______________
-#resize options
+# resize
+# resize options
 
 bindsym $alt+Left resize shrink width 5 px or 5 ppt
 bindsym $alt+Right resize grow width 5 px or 5 ppt
 bindsym $alt+Up resize grow height 5 px or 5 ppt
 bindsym $alt+Down resize shrink height 5 px or 5 ppt
 
-#_____________________________________________________________________________________________________________________i3status________>
-
+#i3status
 # window colors
-#                      border             background           text                                                                   >
+#                      border             background           text                                                                   
 client.focused $bg-color   $bg-color $text-color #00ff00
 client.unfocused   $inactive-bg-color $inactive-bg-color   $inactive-text-color #00ff00
-client.focused_inactive $inactive-bg-color $inactive-bg-color   $inactive-text-color   #00ff00
+client.focusedinactive $inactive-bg-color $inactive-bg-color   $inactive-text-color   #00ff00
 client.urgent $urgent-bg-color   $urgent-bg-color   $text-color   #00ff00
-#_____________________________________________________________________________________________________________________________________>
 
-#_______________________________________________________________________________________________________________________bar___________>
+# bar
 bar {
-       status_command i3blocks -c ~/.config/i3/i3blocks.conf
+       statuscommand i3blocks -c ~/.config/i3/i3blocks.conf
        mode dock
        modifier None
 colors {
 background $bg-color
    separator #ffffff
 # border background text
-focused_workspace $bg-color $bg-color   #00FFFF
-inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-urgent_workspace $urgent-bg-color $urgent-bg-color $text-color
-}
-}
-#_____________________________________________________________________________________________________________________________________
+focusedworkspace $bg-color $bg-color   #00FFFF
+inactiveworkspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+urgentworkspace $urgent-bg-color $urgent-bg-color $text-color
+}}
