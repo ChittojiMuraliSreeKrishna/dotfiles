@@ -33,16 +33,18 @@ bindsym XF86AudioPrev exec  $terminal -e mocp --prev
 bindsym $mod+XF86AudioPlay exec $terminal -e mocp -s
 
 # workspaces
-set $ws1 "1: General"
-set $ws2 "2: Files"
-set $ws3 "3: Chrome"
-set $ws4 "4: Code"
-set $ws5 "5: Gimp"
-set $ws6 "6: Vlc"
-set $ws7 "7: office"
-set $ws8 "8: Mail"
-set $ws9 "9: camera"
-set $ws10 "10: Music"
+# workspaces
+ 36 set $ws1 "1:�~E� General"
+ 37 set $ws2 "2:�~A� Files"
+ 38 set $ws3 "3:�~F|  Chrome"
+ 39 set $ws4 "4:�~D� Code"
+ 40 set $ws5 "5:�~@� Gimp"
+ 41 set $ws6 "6:�~E� Video"
+ 42 set $ws7 "7:�~G~B office"
+ 43 set $ws8 "8:�~Y� Mail"
+ 44 set $ws9 "9:�~@� camera"
+ 45 set $ws10 "10:�~@~A Music"
+
 
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
