@@ -34,16 +34,16 @@ bindsym $mod+XF86AudioPlay exec $terminal -e mocp -s
 
 # workspaces
 # workspaces
- 36 set $ws1 "1:�~E� General"
- 37 set $ws2 "2:�~A� Files"
- 38 set $ws3 "3:�~F|  Chrome"
- 39 set $ws4 "4:�~D� Code"
- 40 set $ws5 "5:�~@� Gimp"
- 41 set $ws6 "6:�~E� Video"
- 42 set $ws7 "7:�~G~B office"
- 43 set $ws8 "8:�~Y� Mail"
- 44 set $ws9 "9:�~@� camera"
- 45 set $ws10 "10:�~@~A Music"
+ set $ws1 "1:�~E� General"
+ set $ws2 "2:�~A� Files"
+ set $ws3 "3:�~F|  Chrome"
+ set $ws4 "4:�~D� Code"
+ set $ws5 "5:�~@� Gimp"
+ set $ws6 "6:�~E� Video"
+ set $ws7 "7:�~G~B office"
+ set $ws8 "8:�~Y� Mail"
+ set $ws9 "9:�~@� camera"
+ set $ws10 "10:�~@~A Music"
 
 
 bindsym $mod+1 workspace number $ws1
@@ -109,12 +109,6 @@ bindsym $alt+Right resize grow width 5 px or 5 ppt
 bindsym $alt+Up resize grow height 5 px or 5 ppt
 bindsym $alt+Down resize shrink height 5 px or 5 ppt
 
-# window-colors
-client.focused $bg-color   $bg-color $text-color #00ff00
-client.unfocused   $inactive-bg-color $inactive-bg-color   $inactive-text-color #00ff00
-client.focusedinactive $inactive-bg-color $inactive-bg-color   $inactive-text-color   #00ff00
-client.urgent $urgent-bg-color   $urgent-bg-color   $text-color   #00ff00
-
 # bar
 bar {
        status_command i3blocks -c ~/.config/i3/i3blocks.conf
@@ -129,3 +123,16 @@ inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
 urgent_workspace $urgent-bg-color $urgent-bg-color $text-color
 }
 }
+
+# window color 
+set $wbg-color           #000000
+set $winactive-bg-color   #000000
+set $wtext-color          #FFD700
+set $winactive-text-color #C0C0C0
+set $wurgent-bg-color     #ff0000
+
+client.focused      $wbg-color      $wbg-color      $wtext-color        #00ff00
+client.unfocused        $winactive-bg-color $winactive-bg-color $winactive-text-color #00ff00
+client.focused_inactive $winactive-bg-color $winactive-bg-color $winactive-text-color #00ff00
+client.urgent           $wurgent-bg-color    $wurgent-bg-color   $wtext-color          #00ff00
+                                                                     
