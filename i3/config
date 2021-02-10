@@ -1,42 +1,103 @@
 # colors
 set $bg-color #000000
-set $inactive-bg-color #2f343f
-set $text-color   #f3f4f5
+set $text-color #FFFFFF
+set $inactive-bg-color #000000
 set $inactive-text-color #676E7D
-set $urgent-bg-color   #E53935
+set $lockImage=~/Pictures/locksceen.png
+set $wallpaper=~/Pictures/wallpaper.jpg
 
-
-# apps-routes
+# app-routes
 set $terminal --no-startup-id konsole
-set $browser --no-startup-id google-chrome-stable
+set $browser --no-startup-id chromium
+set $fileManager --no-startup-id thunar
+set $video --no-startup-id vlc
+set $textEditor --no-startup-id $terminal -e vim
+set $office --no-startup-id libreoffice
+set $netApplet --no-startup-id nm-applet
+set $volume --no-startup-id volumeicon
 
 # config
 set $mod Mod4
 set $alt Mod1
-font pango:monospace 10
+font pango:DejaVu Sans Mono 10
 
-# autostart
-exec --no-startup-id nm-applet
-exec --no-startup-id volumeicon
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec_always --no-startup-id feh --bg-scale /home/wargun/Pictures/groot.jpg
-exec_always picom
+# execute with login
+exec $netApplet
+exec $volumeicon
+exec --no-startup-id xss-lock --transfer-sleep-lock --i3lock --nofork
 
-# sound
-set $refreshi3status killall -SIGUSR1 i3status
+# always executing 
+exec_always --no-startup-id feh --bg-scale $wallpaper
+exec_always picom --config ~/.config/picom.conf
+
+# sound {alsa-utils}
 bindsym XF86AudioRaiseVolume exec amixer sset Master 2%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 2%-
 bindsym XF86AudioMute exec amixer sset Master toggle
 
-# brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+# brightness {xorg-xbacklight}
+bindsym XF86MonoBrightnessUp exec xbacklight -inc 20
+bindsym XF86MonoBrightnessDown exec xbacklight -dec 20
 
 # music
-bindsym XF86AudioPlay exec  $terminal -e mocp -p
-bindsym XF86AudioNext exec  $terminal -e mocp --next
-bindsym XF86AudioPrev exec  $terminal -e mocp --prev
-bindsym $mod+XF86AudioPlay exec $terminal -e mocp -s
+bindsym XF86AudioPlay exec $terminal -e mocp -p
+bindsym XF86AudioNext exec $terminal -e mocp --next
+bindsym XF86AudioPrev exec $terminal -e mocp --prev
+bindsym $alt+XF86AudioPlay exec $terminal -e mocp -s
+
+# borders
+default_border pixel 1
+default_floating_border normal
+hide_edge_borders none
+
+# change borders
+bindsym $mod+u border none
+bindsym $mod+y border pixel 1
+bindsym $mod+n border normal
+
+# focus keys
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# direction keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# window resize keys
+bindsym $alt+r mode "resize"
+bindsym $alt+Left resize shrink width 5 px or 5 ppt
+bindsym $alt+Right resize grow width 5 px or 5 ppt
+bindsym $alt+Up resize grow height 5 px or 5 ppt
+bindsym $alt+Down resize shrink height 5 px or 5 ppt
+
+# layout keys
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus modetoggle
+
+# general usage keys
+bindsym $mod+Shift+r restart
+bindsym $mod+c reload
+bindsym $mod+f fullscreen toggle
+bindsym $alt+F4 kill
+bindsym $mod+Return exec $terminal
+bindsym $mod+d exec rofi -show drun -width 100 -theme Monokai
+bindsym $mod+l exec i3lock -i $lockImage -f -e
+bindsym $alt+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# application keys
+bindsym $mod+shift+t exec --no-startup-id $fileManager
+bindsym $mod+shift+c exec --no-startup-id $browser
+bindsym $mod+shift+v exec --no-startup-id $textEditor
+bindsym $mod+v exec --no-startup-id vlc
+bindsym $mod+shift+o exec --no-startup-id libreoffice
+bindsym $mod+Print exec --no-startup-id spectacle -f
 
 # workspaces
  set $ws1 "1:"
@@ -77,47 +138,6 @@ assign [class="Google-chrome"] $ws3
 assign [class="vlc"] $ws6
 assign [class="libreoffice-startcenter"] $ws7
 
-# keybindings for i3
-bindsym $alt+r mode "resize"
-bindsym $mod+Shift+r restart
-bindsym $mod+c reload
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-bindsym $mod+f fullscreen toggle
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus modetoggle
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-bindsym $alt+F4 kill
-bindsym $mod+Return exec $terminal
-bindsym $mod+d exec rofi -show drun -width 100 -theme Monokai
-bindsym $mod+l exec i3lock -i /home/wargun/Pictures/groot2.png -f -e
-bindsym $alt+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# keybindings for applications
-bindsym $mod+shift+t exec --no-startup-id thunar
-bindsym $mod+shift+c exec --no-startup-id $browser
-bindsym $mod+shift+v exec --no-startup-id code
-bindsym $mod+v exec --no-startup-id vlc
-bindsym $mod+shift+o exec --no-startup-id libreoffice
-bindsym $mod+Print exec --no-startup-id spectacle -f
-
-# resize-window
-bindsym $alt+Left resize shrink width 5 px or 5 ppt
-bindsym $alt+Right resize grow width 5 px or 5 ppt
-bindsym $alt+Up resize grow height 5 px or 5 ppt
-bindsym $alt+Down resize shrink height 5 px or 5 ppt
-
-# window title
-new_window 1pixel
-
 # bar
 bindsym $mod+m bar mode toggle
 bar {
@@ -128,20 +148,13 @@ colors {
 background $bg-color
    separator #ffffff
 # border background text
-focused_workspace $bg-color $bg-color #FF8C00 
+focused_workspace #00FFFF #00FFFF #000000
 inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
 urgent_workspace $urgent-bg-color $urgent-bg-color $text-color
 }
 }
 
-# window color 
-set $wbg-color           #000000
-set $winactive-bg-color   #000000
-set $wtext-color          #FFD700
-set $winactive-text-color #C0C0C0
-set $wurgent-bg-color     #ff0000
-
-client.focused      $wbg-color      $wbg-color      $wtext-color        #00ff00
-client.unfocused        $winactive-bg-color $winactive-bg-color $winactive-text-color #00ff00
-client.focused_inactive $winactive-bg-color $winactive-bg-color $winactive-text-color #00ff00
-client.urgent           $wurgent-bg-color    $wurgent-bg-color   $wtext-color          #00ff00
+client.focused      $bg-color      $bg-color      $text-color        #00ff00
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
