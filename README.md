@@ -1,11 +1,15 @@
 # .vimrc
 
 ## create new directory 
-> mkdir  ~/.vim/undodir -p
+```bash
+ mkdir  ~/.vim/undodir -p
+ ```
 
 ## for plugins first download
-> curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+``` bash
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
     
 ### to begin with plugins
 ```vim
@@ -20,4 +24,6 @@ call plug#begin('~/.vim/plugged')
 # i3
 > sudo pacman -S i3 -- for arch
 ## i3 default config page
-> ~/.config/i3/config
+```bash
+ vim ~/.config/i3/config
+```
