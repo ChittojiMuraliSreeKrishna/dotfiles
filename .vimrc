@@ -1,5 +1,6 @@
 syntax on
 
+set title
 set noerrorbells
 set relativenumber
 set nohlsearch
@@ -49,5 +50,6 @@ call plug#end()
 
 colorscheme gruvbox
 set background=dark
+set showtabline=2
 set laststatus=2
 let mapleader =" "
