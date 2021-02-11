@@ -3,8 +3,8 @@ set $bg-color #000000
 set $text-color #FFFFFF
 set $inactive-bg-color #000000
 set $inactive-text-color #676E7D
-set $lockImage=~/Pictures/locksceen.png
-set $wallpaper=~/Pictures/wallpaper.jpg
+set $lockImage ~/Pictures/locksceen.png
+set $wallpaper ~/Pictures/wallpaper.jpg
 
 # app-routes
 set $terminal --no-startup-id konsole
