@@ -2,7 +2,7 @@
 set $bg-color #000000
 set $text-color #FFFFFF
 set $inactive-bg-color #000000
-set $inactive-text-color #676E7D
+set $inactive-text-color #FFFFFF
 set $lockImage ~/Pictures/locksceen.png
 set $wallpaper ~/Pictures/wallpaper.jpg
 
