@@ -1,31 +1,28 @@
-# colors
-set $bg-color #000000
-set $wbg-color #233554
-set $text-color #e6f1ff
-set $inactive-bg-color #020c1b
-set $inactive-text-color #8892b0
-set $urgent-bg-color #FF7F00
+# wallpapers
 set $lockImage ~/Pictures/locksceen.png
 set $wallpaper ~/Pictures/wallpaper.jpg
 
-# app-routes
+# app-variables
 set $terminal --no-startup-id konsole
-set $browser --no-startup-id chromium
+set $browser --no-startup-id google-chrome-stable
 set $fileManager --no-startup-id nemo
 set $video --no-startup-id vlc
 set $textEditor --no-startup-id code
 set $office --no-startup-id libreoffice
 set $netApplet --no-startup-id nm-applet
 set $volume --no-startup-id volumeicon
+set $conky --no-startup-id start_conky_maia
 
 # config
 set $mod Mod4
 set $alt Mod1
-font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 10
 
 # execute with login
 exec $netApplet
 exec $volume
+exec $conky
+exec --no-startup-id clipit
 exec --no-startup-id xss-lock --transfer-sleep-lock --i3lock --nofork
 
 # always executing
@@ -48,7 +45,7 @@ bindsym XF86AudioPrev exec $terminal -e mocp --prev
 bindsym $alt+XF86AudioPlay exec $terminal -e mocp -s
 
 # borders
-default_border pixel 0
+default_border pixel 1
 default_floating_border normal
 hide_edge_borders vertical
 
@@ -100,7 +97,7 @@ bindsym $alt+Escape exec "i3-nagbar -t warning -m 'Do you want to exit ?' -b 'Ye
 # application keys
 bindsym $mod+Ctrl+Return exec --no-startup-id $fileManager
 bindsym $mod+Ctrl+KP_Enter exec --no-startup-id $fileManager
-bindsym $mod+shift+c exec --no-startup-id $browser
+bindsym $mod+F2 exec --no-startup-id $browser
 bindsym $mod+shift+v exec --no-startup-id $textEditor
 bindsym $mod+v exec --no-startup-id vlc
 bindsym $mod+shift+o exec --no-startup-id libreoffice
@@ -145,15 +142,18 @@ bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
 assign [class="Nemo"] $ws2
-assign [class="Chromium"] $ws3
+assign [class="Google-chrome"] $ws3
 assign [class="vlc"] $ws5
 assign [class="libreoffice-startcenter"] $ws7
-# window borders
 
-client.focused $wbg-color $wbg-color $text-color
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color
-client.unfocused $bg-color $bg-color $text-color
-client.urgent $urgent-bg-color $urgent-bg-color $text-color
+# Theme colors
+# class                   border  backgr. text    indic.   child_border
+  client.focused          #556064 #556064 #80FFF9 #FDF6E3
+  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
+  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+  client.placeholder      #000000 #0c0c0c #ffffff #000000
+  client.background       #2B2C2B
  
 
 # bar
@@ -168,16 +168,20 @@ bar {
         separator_symbol "|"
         workspace_min_width 40
         strip_workspace_numbers yes
-colors {
-        background $bg-color
-        separator #ffffff
-        # border background text
-        focused_workspace $wbg-color $wbg-color $text-color
-        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-        urgent_workspace $urgent-bg-color $urgent-bg-color $text-color
-}
+ colors {
+        background #222D31
+        statusline #F9FAF9
+        separator  #454947
+
+#                      border  backgr. text
+        focused_workspace  #16a085 #16a085 #292F34
+        active_workspace   #16a085 #353836 #FDF6E3
+        inactive_workspace #595B5B #222D31 #EEE8D5
+        binding_mode       #16a085 #2C2C2C #F9FAF9
+        urgent_workspace   #16a085 #FDF6E3 #E5201D
+    }
 }
 
 # i3-gaps
-gaps inner 5
-gaps outer 5
+gaps inner 14
+gaps outer -2
