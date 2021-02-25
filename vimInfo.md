@@ -21,10 +21,4 @@ call plug#begin('~/.vim/plugged')
 ## to find plugins
 > https://vimawesome.com/
 
-# i3
-> sudo pacman -S i3 -- for arch
 
-## i3 default config page
-```bash
- vim ~/.config/i3/config
-```
