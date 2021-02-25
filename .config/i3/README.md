@@ -4,8 +4,7 @@
 > sudo pacman -S i3
 
 ### For debian
-> sudo apt-get install i3
-> sudo apt-get install i3blocks
+> sudo apt-get install i3 i3blocks
 
 ## Apps I've Use
 1. feh -- setting wallpapers
