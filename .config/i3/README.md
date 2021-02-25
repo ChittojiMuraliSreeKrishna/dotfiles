@@ -10,7 +10,7 @@
 1. feh -- setting wallpapers
 1. chrome -- browser
 1. nemo -- file manager 
-1. xfce4-terminal -- terminal
+1. terminator -- terminal
 1. vscode/vim -- text-editor
 1. vlc -- video player
 1. libreoffice -- office
