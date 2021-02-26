@@ -23,3 +23,10 @@ chsh /usr/bin/fish
 ```bash
 fish_config
 ```
+
+# i3wm
+## To install i3
+```bash
+sudo pacman -S i3
+```
+## Config for i3 will be present in ~/.config/i3/config or ~/.i3/ 
