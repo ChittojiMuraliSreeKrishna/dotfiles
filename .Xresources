@@ -1,17 +1,6 @@
-URxvt.font: xft:monaco:size=10
-URxvt.letterSpace: -1
-URxvt.lineSpace: 0
-URxvt.geometry: 92x24
-URxvt.internalBorder: 20
-URxvt.background: [100]#222D31
-URxvt.depth: 32
-URxvt*scrollBar: false
-URxvt*background: black
-URxvt*foreground: grey
-URxvt*saveLines: 5000
-URxvt.cursorBlink: true
-URxvt.cursorUnderline: false
-
+! ====================
+! === Global Theme ===
+! ====================
 *background:                      #222D31
 *foreground:                      #d8d8d8
 *fading:                          8
@@ -52,7 +41,105 @@ URxvt.cursorUnderline: false
 *color7:                          #d8d8d8
 *color15:                         #f8f8f8
 
+
+
+
+
+! ######################################################
+! -------------------- XTerm Config --------------------
+! ######################################################
+
+XTerm.vt100.geometry: 79x25
+! ===============
+! === General ===
+! ===============
+XTerm*faceName: Dejavu Sans Mono
+XTerm*faceSize: 11
+XTerm.vt100.locale: false
+XTerm.vt100.utf8: true
+XTerm*internalBorder: 10
+XTerm*transparent: true
+
+! VT Font Menu: Unreadable
+xterm*faceSize1: 8
+! VT font menu: Tiny
+xterm*faceSize2: 10
+! VT font menu: Medium
+xterm*faceSize3: 12
+! VT font menu: Large
+xterm*faceSize4: 16
+! VT font menu: Huge
+xterm*faceSize5: 22
+
+! ==============
+! === Cursor ===
+! ==============
+XTerm*pointerColor: white
+XTerm*PointerColorBackground: black
+XTerm*cursorColor: red
+XTerm*cursorBlink: true
+
+! ======================
+! === Selecting Text ===
+! ======================
+XTerm*highlightSelection: true
+XTerm*trimSelection: true
+
+! =============================
+! === Scrolling / Scrollbar ===
+! =============================
+XTerm*saveLines: 4096
+XTerm.vt100.scrollBar: false
+XTerm.vt100.scrollBar.width: 8
+XTerm*scrollBar: false
+
+! ===================
+! === Keybindings ===
+! ===================
+XTerm.vt100.translations: #override \n\
+    Ctrl <Key> minus: smaller-vt-font() \n\
+    Ctrl <Key> plus: larger-vt-font() \n\
+    Ctrl <Key> 0: set-vt-font(d) \n\
+    Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+
+XTerm*selectToClipboard: true
+XTerm*fullscreen: never
+
+
+
+! ######################################################
+! -------------------- URxvt Config --------------------
+! ######################################################
+
 URxvt.iso14755: false
+URxvt.geometry: 92x24
+! ===============
+! === General ===
+! ===============
+URxvt.font: xft:monaco:size=10
+URxvt.letterSpace: -1
+URxvt.lineSpace: 0
+URxvt.internalBorder: 20
+URxvt.depth: 32
+URxvt.transparent: true
+URxvt.shading:20
+
+! =============================
+! === Scrolling / Scrollbar ===
+! =============================
+ URxvt*scrollBar: false
+ URxvt*saveLines: 5000
+
+! ==============
+! === Cursor ===
+! ==============
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+
+! ===================
+! === Keybindings ===
+! ===================
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 

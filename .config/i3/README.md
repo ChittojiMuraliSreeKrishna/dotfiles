@@ -4,14 +4,13 @@
 > sudo pacman -S i3
 
 ### For debian
-> sudo apt-get install i3
-> sudo apt-get install i3blocks
+> sudo apt-get install i3 i3blocks
 
 ## Apps I've Use
 1. feh -- setting wallpapers
 1. chrome -- browser
 1. nemo -- file manager 
-1. xfce4-terminal -- terminal
+1. terminator -- terminal
 1. vscode/vim -- text-editor
 1. vlc -- video player
 1. libreoffice -- office
