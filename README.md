@@ -21,4 +21,15 @@ call plug#begin('~/.vim/plugged')
 ## to find plugins
 > https://vimawesome.com/
 
-
+# Install Window Manager
+```bash
+sudo pacman -S i3
+```
+### to start without Manager
+```bash
+vim .xinitrc
+exec i3
+atartx
+```
+### Config for urxvt or xterm
+> ~/.Xresources
