@@ -33,3 +33,13 @@ atartx
 ```
 ### Config for urxvt or xterm
 > ~/.Xresources
+
+### Music Player moc
+```bash
+sudo pacman -S moc
+mkdir ~/.moc/
+```
+#### default configuration for moc will be in, now copy the files to the newly created folder
+```bash
+cp /usr/share/doc/moc/ ~/.moc/
+```
