@@ -1,18 +1,39 @@
 
 ## Apps I've Use
-1. feh -- setting wallpapers
-1. chrome -- browser
-1. nemo -- file manager 
-1. terminator -- terminal
-1. vscode/vim -- text-editor
-1. vlc -- video player
-1. libreoffice -- office
-
+* feh -- setting wallpapers
+```bash
+sudo pacman -S feh
+```
+* chrome -- browser
+```bash
+paru -S google-chrome
+```
+* nemo -- file manager
+```bash
+sudo pacman -S nemo
+``` 
+* terminator -- terminal
+```bash
+sudo pacman -S terminator
+```
+* vscode/vim ~~text-editor~~
+```bash
+paru -S visual-studio-code
+```
+* vlc ~~video player~~
+```bash
+sudo pacman -S vlc
+```
+* libreoffice ~~office~~
+```bash
+sudo pacman -S libreoffice
+```
+* vim  ~~terminal-Texteditor~~
 
 ## App icons on bar
-1. clipit -- clipboard
-1. volumeicon -- volume options
-1. network-manager-applet -- network options
+* clipit -- clipboard
+* volumeicon -- volume options
+* network-manager-applet -- network options
 
 ## Lock-screen
 > i am using i3lock which comes standard in arch
@@ -22,7 +43,7 @@
 
 ## AppMenu
 > sudo pacman -S rofi
-1. rofi -show drun 
+* rofi -show drun 
 
 # bar 
 > status_command i3blocks -c ~/.config/i3/i3blocks.conf
