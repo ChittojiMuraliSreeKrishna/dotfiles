@@ -22,14 +22,10 @@ call plug#begin('~/.vim/plugged')
 > https://vimawesome.com/
 
 # Other Stuff
-## install i3wm
-```bash
-sudo pacman -S i3
-```
-## to start without Manager
+## to start Any Managers with startx
 ```bash
 vim .xinitrc
-exec i3
+exec managerName
 atartx
 ```
 ## Config for urxvt or xterm
