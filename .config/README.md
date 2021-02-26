@@ -29,4 +29,4 @@ fish_config
 ```bash
 sudo pacman -S i3
 ```
-## Config for i3 will be present in ~/.config/i3/config or ~/.i3/ 
+## Config for i3 will be present in ~/.config/i3/config or ~/.i3/config
