@@ -40,6 +40,11 @@ sudo pacman -S network-manager-applet
 ```bash
 sudo pacman -S alsa-utils
 ```
+## Brightness
+> i have intel_backlight so i am using light
+```bash
+sudo pacman -S light
+```
 ## AppMenu
 ```bash
 sudo pacman -S rofi
@@ -48,3 +53,21 @@ rofi -show drun
 # bar 
 > status_command i3blocks -c ~/.config/i3/i3blocks.conf
 
+# XF86 HOT Keys
+## Volume Keys
+```bash
+XF86AudioRaiseVolume
+XF86AudioLowerVolume
+XF86AudioMute
+```
+## brightness Keys
+```bash
+XF86MonBrightnessUp
+XF86MonBrightnessDown
+```
+## Audio Keys
+```bash
+XF86AudioPlay
+XF86AudioNext
+XF86AudioPrev
+```
