@@ -1,54 +1,34 @@
 
 ## Apps I've Use
-* feh -- setting wallpapers
 ```bash
+# feh -- setting wallpapers
 sudo pacman -S feh
-```
-* chrome -- browser
-```bash
+# chrome -- browser
 paru -S google-chrome
-```
-* nemo -- file manager
-```bash
+# nemo -- file manager
 sudo pacman -S nemo
-``` 
-* terminator -- terminal
-```bash
+# terminator -- terminal
 sudo pacman -S terminator
-```
-* vscode/vim -- text-editor
-```bash
+# vscode/vim -- text-editor
 paru -S visual-studio-code
-```
-* vlc -- video player
-```bash
+# vlc -- video player
 sudo pacman -S vlc
-```
-* libreoffice -- office
-```bash
+# libreoffice -- office
 sudo pacman -S libreoffice
-```
-* vim  -- terminal-Texteditor
-```bash
+# vim  -- terminal-Texteditor
 sudo pacman -S vim
-```
-* Font-Awesome -- icons
-```bash
+# Font-Awesome -- icons
 sudo pacman -S ttf-fontawesome
 ```
 
 
 ## App icons on bar
-* clipit -- clipboard
 ```bash
+# clipit -- clipboard
 sudo pacman -S clipit
-```
-* volumeicon -- volume options
-```bash
+# volumeicon -- volume options
 sudo pacman -S volumeicon
-```
-* network-manager-applet -- network options
-```bash
+# network-manager-applet -- network options
 sudo pacman -S network-manager-applet
 ```
 
