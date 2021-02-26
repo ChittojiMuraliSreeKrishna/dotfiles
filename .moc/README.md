@@ -1,4 +1,4 @@
 # installation
 >sudo pacman -S moc
-## Default config directory 
+## config directory 
 >~/.moc/
