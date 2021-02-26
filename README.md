@@ -21,25 +21,26 @@ call plug#begin('~/.vim/plugged')
 ## to find plugins
 > https://vimawesome.com/
 
-# Install Window Manager
+# Other Stuff
+## install i3wm
 ```bash
 sudo pacman -S i3
 ```
-### to start without Manager
+## to start without Manager
 ```bash
 vim .xinitrc
 exec i3
 atartx
 ```
-### Config for urxvt or xterm
+## Config for urxvt or xterm
 > ~/.Xresources
 
-### Music Player moc
+## Music Player moc
 ```bash
 sudo pacman -S moc
 mkdir ~/.moc/
 ```
-#### default configuration for moc will be in, now copy the files to the newly created folder
+### default configuration for moc will be in, now copy the files to the newly created folder
 ```bash
 cp /usr/share/doc/moc/ ~/.moc/
 ```
