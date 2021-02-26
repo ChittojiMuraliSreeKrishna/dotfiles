@@ -47,17 +47,11 @@ bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'"
 bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'"
 
 # music {moc}
-<<<<<<< HEAD
 bindsym XF86AudioPlay exec $terminal -x mocp -p;exec notify-send 'Music Player' 'Started'
 bindsym XF86AudioNext exec $terminal -x mocp --next;exec notify-send 'Music Player' 'Next'
 bindsym XF86AudioPrev exec $terminal -x mocp --prev;exec notify-send 'Music Player' 'Previous'
 bindsym $alt+XF86AudioPlay exec $terminal -x mocp -s;exec notify-send 'Music Player' 'Stop'
-=======
-bindsym XF86AudioPlay exec $terminal -x mocp -p
-bindsym XF86AudioNext exec $terminal -x mocp --next
-bindsym XF86AudioPrev exec $terminal -x mocp --prev
-bindsym $alt+XF86AudioPlay exec $terminal -x mocp -s
->>>>>>> 47936f508e65d0c973cbb55bde6921090c203500
+
 
 ###############################
 ### settings for Appearance ###
