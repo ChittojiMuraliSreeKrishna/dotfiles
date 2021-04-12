@@ -40,3 +40,8 @@ mkdir ~/.moc/
 ```bash
 cp /usr/share/doc/moc/ ~/.moc/
 ```
+## tap to click for wm's
+```bash
+sudo mkdir -p /etc/X11/xorg.conf.d
+sudo touch /etc/X11/xorg.conf.d/90-touchpad.conf
+```
