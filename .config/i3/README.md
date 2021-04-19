@@ -30,6 +30,8 @@ paru -S clipit
 sudo pacman -S volumeicon
 # network-manager-applet -- network options
 sudo pacman -S network-manager-applet
+# power manager
+sudo pacman -S mate-power-manager
 ```
 
 ## Lock-screen
