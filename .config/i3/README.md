@@ -6,7 +6,7 @@ sudo pacman -S feh
 # chrome -- browser
 paru -S google-chrome
 # nemo -- file manager
-sudo pacman -S nemo
+sudo pacman -S thunar
 # terminator -- terminal
 sudo pacman -S terminator
 # vscode/vim -- text-editor
@@ -18,14 +18,14 @@ sudo pacman -S libreoffice
 # vim  -- terminal-Texteditor
 sudo pacman -S vim
 # Font-Awesome -- icons
-sudo pacman -S ttf-fontawesome
+sudo pacman -S ttf-font-awesome
 ```
 
 
 ## App icons on bar
 ```bash
 # clipit -- clipboard
-sudo pacman -S clipit
+paru -S clipit
 # volumeicon -- volume options
 sudo pacman -S volumeicon
 # network-manager-applet -- network options
