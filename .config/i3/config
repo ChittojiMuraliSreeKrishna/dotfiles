@@ -10,9 +10,10 @@ set $lockImage ~/Pictures/lockscreen.png
 set $wallpaper ~/Pictures/wallpaper.jpg
 
 # app-variables
-set $terminal --no-startup-id terminator
+set $terminal --no-startup-id alacritty
+set $power --no-startup-id mate-power-manager
 set $browser --no-startup-id google-chrome-stable
-set $fileManager --no-startup-id nemo
+set $fileManager --no-startup-id thunar
 set $video --no-startup-id vlc
 set $textEditor --no-startup-id code
 set $office --no-startup-id libreoffice
@@ -25,6 +26,7 @@ set $clip --no-startup-id clipit
 ############################################
 # execute with login
 exec $netApplet
+exec $power
 exec $volume
 exec $clip
 exec xrdb ~/.Xresources
@@ -47,10 +49,10 @@ bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'"
 bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'"
 
 # music {moc}
-bindsym XF86AudioPlay exec $terminal -x mocp -p;exec notify-send 'Music Player' 'Started'
-bindsym XF86AudioNext exec $terminal -x mocp --next;exec notify-send 'Music Player' 'Next'
-bindsym XF86AudioPrev exec $terminal -x mocp --prev;exec notify-send 'Music Player' 'Previous'
-bindsym $alt+XF86AudioPlay exec $terminal -x mocp -s;exec notify-send 'Music Player' 'Stop'
+bindsym XF86AudioPlay exec $terminal -e mocp -p;exec notify-send 'Music Player' 'Started'
+bindsym XF86AudioNext exec $terminal -e mocp --next;exec notify-send 'Music Player' 'Next'
+bindsym XF86AudioPrev exec $terminal -e mocp --prev;exec notify-send 'Music Player' 'Previous'
+bindsym $alt+XF86AudioPlay exec $terminal -e mocp -s;exec notify-send 'Music Player' 'Stop'
 
 
 ###############################
@@ -123,9 +125,11 @@ bindsym $alt+F4 kill
 bindsym $mod+Return exec $terminal
 bindsym $mod+KP_Enter exec $terminal
 bindsym $mod+d exec rofi -show drun -theme sidebar
+bindsym $mod+XF86Search exec rofi -show run -theme sidebar
+bindsym $mod+XF86Sleep exec -e poweroff
 bindsym $mod+l exec i3lock -i $lockImage -f -e
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym $alt+Escape exec "i3-nagbar -t warning -m 'Do you want to exit ?' -b 'Yes, exit i3' 'i3-msg exit'" 
+bindsym $alt+Escape exec "i3-nagbar -t warning -m 'Do you want to exit ?' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # application keys
 bindsym $mod+Ctrl+Return exec --no-startup-id $fileManager
@@ -180,13 +184,13 @@ bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
 # Open applications in specific workspace
-assign [class="Nemo"] $ws2
+assign [class="Thunar"] $ws2
 assign [class="Google-chrome"] $ws3
 assign [class="vlc"] $ws5
 assign [class="libreoffice-startcenter"] $ws7
 
 # config for applications
-for_window [class="Terminator"] border pixel 1
+for_window [class="Alacritty"] border pixel 1
 
 # auto back and forth
 workspace_auto_back_and_forth yes
