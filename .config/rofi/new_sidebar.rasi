@@ -1,0 +1,74 @@
+* {
+    text-color:  #ffeedd;
+    background-color:  rgba(0,43,54,0.5);
+    dark: #073642;
+    highlight:     bold #fdf6e3;
+    font: "Monospace 15";
+}
+window {
+    height:   100%;
+    width: 30em;
+    location: west;
+    anchor:   west;
+    border:  0px 2px 0px 0px;
+    text-color: #839496;
+}
+
+mode-switcher {
+    border: 2px 0px 0px 0px;
+    background-color: #2aa198;
+    padding: 4px;
+}
+button selected {
+    border-color: #859900;
+    text-color: #eee8d5;
+}
+inputbar {
+    background-color: #073642;
+    text-color: #839496;
+    padding: 4px;
+    border: 0px 0px 2px 0px;
+}
+mainbox {
+    expand: true;
+    background-color: #1c1c1cee;
+    spacing: 1em;
+}
+listview {
+    padding: 0em 0.4em 0em 1em;
+    dynamic: false;
+    lines: 0;
+}
+element selected  normal {
+    background-color: #268bd2;
+}
+element normal active {
+    text-color: #6c71c4;
+}
+element normal urgent {
+    text-color: #dc322f;
+}
+element alternate normal {
+}
+element alternate active {
+    text-color: #268bd2;
+}
+element alternate urgent {
+    text-color: #cb4b16;
+}
+element selected active {
+    background-color: lightblue;
+    text-color: @dark;
+}
+element selected urgent {
+    background-color: #586e75;
+    text-color: #002b36;
+}
+
+error-message {
+    expand: true;
+    background-color: red;
+    border-color: darkred;
+    border: 2px;
+    padding: 1em;
+}
