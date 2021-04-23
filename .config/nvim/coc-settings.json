@@ -1,11 +1,14 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
-      "javascript",
-      "typescript",
-      "typescriptreact",
-      "json",
-      "css",
-      "html",
-      "javascriptreact",
-      "typescript.tsx"]
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "css",
+    "html",
+    "javascriptreact",
+    "typescript.tsx"
+  ],
+  "tsserver.formatOnType": true,
+  "coc.preferences.formatOnType": true
 }
