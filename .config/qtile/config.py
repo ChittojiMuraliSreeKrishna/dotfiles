@@ -147,7 +147,6 @@ colors = [["#282c34", "#282c34"], # panel background
           ["#ff5555", "#ff5555"], # border line color for current tab
           ["#008a00", "#008a00"], # border line color for 'other tabs' and color for 'odd widgets'
           ["#4f76c7", "#4f76c7"], # color for the 'even widgets'
-          ["#e1acff", "#e1acff"], # window name
           ["#ecbb00", "#ecbb00"]] # backbround for inactive screens
 
 
@@ -163,6 +162,17 @@ screens = [
         Screen(
             top=bar.Bar(
                 [
+                    widget.Systray(
+                        background = colors[1],
+                        foreground=colors[2],
+                        padding=5
+                        ),
+                    widget.Sep(
+                        linewidth = 0,
+                        padding = 6,
+                        foreground = colors[2],
+                        background = colors[1]
+                        ),
                     widget.Sep(
                         linewidth = 0,
                         padding = 6,
@@ -172,7 +182,7 @@ screens = [
                     widget.TextBox(
                         text = ' ',
                         background = colors[5],
-                        foreground = colors[7],
+                        foreground = colors[6],
                         fontsize=20
                         ),
                     widget.Clock(
@@ -192,11 +202,6 @@ screens = [
                         padding = 5,
                         fontsize = 15
                         ),
-                    widget.Systray(
-                        background = colors[1],
-                        foreground=colors[2],
-                        padding = 5
-                        ),
                     widget.Sep(
                         linewidth = 0,
                         padding = 6,
@@ -204,41 +209,31 @@ screens = [
                         background=colors[0]
                         ),
                     widget.TextBox(
-                        text = ' : ',
-                        fontsize = 15,
-                        foreground = colors[2],
-                        background = colors[0],
-                        padding = 0
-                        ),
-                    widget.WindowName(
-                        foreground = colors[4],
-                        background = colors[0],
-                        padding = 0
-                        ),
-                    widget.Sep(
-                        linewidth = 0,
-                        padding = 6,
-                        foreground = colors[2],
-                        background = colors[0]
-                        ),
-                    widget.Sep(
-                        linewidth = 0,
-                        padding = 6,
-                        foreground = colors[2],
-                        background = colors[0]
-                        ),
+                        text = ' : ',
+                            foreground = colors[3],
+                            background = colors[0],
+                            fontsize = 18,
+                            padding=0
+                            ),
                     widget.Moc(
                         background = colors[0],
                         foreground = colors[2],
                         noplay_color = colors[1],
-                        play_color=colors[6],
+                        play_color=colors[3],
                         ),
-                    widget.TextBox(
-                            text = ' : ',
-                            foreground = colors[6],
-                            background = colors[0],
-                            padding = 0
-                            ),
+                    widget.Spacer(
+                        foreground = colors[2],
+                        background = colors[0],
+                        padding = 0
+                        ),
+                    widget.Sep(
+                        linewidth = 0,
+                        padding = 6,
+                        foreground = colors[2],
+                        background = colors[0]
+                        ),
+                    
+                    
                     widget.Sep(
                         linewidth = 0,
                         padding = 6,
