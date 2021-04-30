@@ -113,14 +113,14 @@ keys = [
                 lazy.spawn(myTerm+" -e poweroff"))
         ]
 
-group_names = [("", {'layout': 'ratiotile'}),
-                ("", {'layout': 'ratiotile'}),
-                ("", {'layout': 'ratiotile'}),
-                ("", {'layout': 'ratiotile'}),
-                ("", {'layout': 'ratiotile'}),
-                ("", {'layout': 'ratiotile'}),
-                ("", {'layout': 'ratiotile'}),
-                ("", {'layout': 'ratiotile'})]
+group_names = [("1.", {'layout': 'ratiotile'}),
+                ("2.", {'layout': 'ratiotile'}),
+                ("3.", {'layout': 'ratiotile'}),
+                ("4.", {'layout': 'ratiotile'}),
+                ("5.", {'layout': 'ratiotile'}),
+                ("6.", {'layout': 'ratiotile'}),
+                ("7.", {'layout': 'ratiotile'}),
+                ("8.", {'layout': 'ratiotile'})]
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
 
@@ -162,17 +162,6 @@ screens = [
         Screen(
             top=bar.Bar(
                 [
-                    widget.Systray(
-                        background = colors[1],
-                        foreground=colors[2],
-                        padding=5
-                        ),
-                    widget.Sep(
-                        linewidth = 0,
-                        padding = 6,
-                        foreground = colors[2],
-                        background = colors[1]
-                        ),
                     widget.Sep(
                         linewidth = 0,
                         padding = 6,
@@ -202,38 +191,57 @@ screens = [
                         padding = 5,
                         fontsize = 15
                         ),
-                    widget.Sep(
-                        linewidth = 0,
-                        padding = 6,
-                        foreground = colors[2],
-                        background=colors[0]
-                        ),
                     widget.TextBox(
-                        text = ' : ',
+                        text = '',
+                        padding = 3,
+                        fontsize = 18,
+                        foreground = colors[0],
+                        background=colors[6]
+                        ),
+                    widget.Backlight(
+                        background = colors[6],
+                        foreground = colors[0],
+                        fontsize = 15,
+                        backlight_name = 'intel_backlight'
+                        ),
+                    widget.Systray(
+                        background = colors[1],
+                        foreground=colors[2],
+                        padding=3
+                        ),
+                    widget.Sep(
+                            linewidth = 2,
+                            padding = 6,
+                            foreground = colors[2],
+                            background = colors[0]
+                            ),
+                    widget.TextBox(
+                        text = ':',
                             foreground = colors[3],
                             background = colors[0],
                             fontsize = 18,
-                            padding=0
+                            padding=4
                             ),
                     widget.Moc(
                         background = colors[0],
                         foreground = colors[2],
                         noplay_color = colors[1],
                         play_color=colors[3],
+                        update_interval = 0.1
                         ),
                     widget.Spacer(
                         foreground = colors[2],
                         background = colors[0],
                         padding = 0
                         ),
+                    widget.CurrentLayout(
+                            background = colors[0],
+                            foreground = colors[2],
+                            fontsize = 16,
+                            padding = 5
+                            ),
                     widget.Sep(
-                        linewidth = 0,
-                        padding = 6,
-                        foreground = colors[2],
-                        background = colors[0]
-                        ),
-                    widget.Sep(
-                        linewidth = 0,
+                        linewidth = 2,
                         padding = 6,
                         foreground = colors[2],
                         background = colors[0]
@@ -269,3 +277,7 @@ screens = [
             ),
         ]
 
+@hook.subscribe.client_new
+def client_new(client):
+    if client.name == 'vlc':
+        client.togroup(8)
