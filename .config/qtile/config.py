@@ -277,6 +277,12 @@ screens = [
             ),
         ]
 
+@hook.subscribe.startup_once
+def autostart():
+    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.call([home])
+
+
 @hook.subscribe.client_new
 def client_new(client):
     if client.name == 'vlc':
