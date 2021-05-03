@@ -7,19 +7,17 @@ set $alt Mod1
 
 # wallpapers
 set $lockImage ~/Pictures/lockscreen.png
-set $wallpaper ~/Pictures/wallpaper.jpg
 
 # app-variables
 set $terminal --no-startup-id alacritty
 set $power --no-startup-id mate-power-manager
-set $browser --no-startup-id google-chrome-stable
+set $browser --no-startup-id firefox
 set $fileManager --no-startup-id thunar
 set $video --no-startup-id vlc
 set $textEditor --no-startup-id code
 set $office --no-startup-id libreoffice
 set $netApplet --no-startup-id nm-applet
 set $volume --no-startup-id volumeicon
-set $music --no-startup-id mocicon
 
 ############################################
 ### Apps or Config to run Always/onStart ###
@@ -30,13 +28,12 @@ exec $power
 exec $volume
 exec $music
 exec xrdb ~/.Xresources
+exec nitrogen --restore
 exec --no-startup-id xss-lock --transfer-sleep-lock --i3lock --nofork
 
 # always executing
-exec_always --no-startup-id feh --bg-scale $wallpaper
 exec_always picom --config ~/.config/picom.conf
 exec_always dunst
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 ###########################################
 ### Settings for Sound/Brightness/Music ###
@@ -51,10 +48,10 @@ bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'"
 bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'"
 
 # music {moc}
-bindsym XF86AudioPlay exec $terminal -e mocp -p;exec notify-send 'Music Player' 'Started'
-bindsym XF86AudioNext exec $terminal -e mocp --next;exec notify-send 'Music Player' 'Next'
-bindsym XF86AudioPrev exec $terminal -e mocp --prev;exec notify-send 'Music Player' 'Previous'
-bindsym $alt+XF86AudioPlay exec $terminal -e mocp -s;exec notify-send 'Music Player' 'Stop'
+bindsym XF86AudioPlay exec mocp -p;exec notify-send 'Music Player' 'Started'
+bindsym XF86AudioNext exec mocp --next;exec notify-send 'Music Player' 'Next'
+bindsym XF86AudioPrev exec mocp --prev;exec notify-send 'Music Player' 'Previous'
+bindsym $alt+XF86AudioPlay exec mocp -s;exec notify-send 'Music Player' 'Stop'
 
 ###############################
 ### settings for Appearance ###
@@ -139,40 +136,34 @@ bindsym $mod+Print exec --no-startup-id spectacle -f
 ### Settings for Workspaces ###
 ###############################
 # workspace names
- set $ws1 "1"
- set $ws2 "2"
- set $ws3 "3"
- set $ws4 "4"
- set $ws5 "5"
- set $ws6 "6"
- set $ws7 "7"
- set $ws8 "8"
- set $ws9 "9"
- set $ws10 "10"
+ set $ws1 ""
+ set $ws2 ""
+ set $ws3 ""
+ set $ws4 ""
+ set $ws5 ""
+ set $ws6 ""
+ set $ws7 ""
+ set $ws8 ""
 
 # switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
 
 # move to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1;exec notify-send 'Moved Container To' '$WS1'
-bindsym $mod+Shift+2 move container to workspace number $ws2;exec notify-send 'Moved Container To' '$ws2'
-bindsym $mod+Shift+3 move container to workspace number $ws3;exec notify-send 'Moved Container To' '$ws3'
-bindsym $mod+Shift+4 move container to workspace number $ws4;exec notify-send 'Moved Container To' '$ws4'
-bindsym $mod+Shift+5 move container to workspace number $ws5;exec notify-send 'Moved Container To' '$ws5'
-bindsym $mod+Shift+6 move container to workspace number $ws6;exec notify-send 'Moved Container To' '$ws6'
-bindsym $mod+Shift+7 move container to workspace number $ws7;exec notify-send 'Moved Container To' '$ws7'
-bindsym $mod+Shift+8 move container to workspace number $ws8;exec notify-send 'Moved Container To' '$ws8'
-bindsym $mod+Shift+9 move container to workspace number $ws9;exec notify-send 'Moved Container To' '$ws9'
-bindsym $mod+Shift+0 move container to workspace number $ws10;exec notify-send 'Moved Container To' '$ws10'
+bindsym $mod+Shift+1 move container to workspace $ws1;exec notify-send 'Moved Container To' '$WS1'
+bindsym $mod+Shift+2 move container to workspace $ws2;exec notify-send 'Moved Container To' '$ws2'
+bindsym $mod+Shift+3 move container to workspace $ws3;exec notify-send 'Moved Container To' '$ws3'
+bindsym $mod+Shift+4 move container to workspace $ws4;exec notify-send 'Moved Container To' '$ws4'
+bindsym $mod+Shift+5 move container to workspace $ws5;exec notify-send 'Moved Container To' '$ws5'
+bindsym $mod+Shift+6 move container to workspace $ws6;exec notify-send 'Moved Container To' '$ws6'
+bindsym $mod+Shift+7 move container to workspace $ws7;exec notify-send 'Moved Container To' '$ws7'
+bindsym $mod+Shift+8 move container to workspace $ws8;exec notify-send 'Moved Container To' '$ws8'
 
 # navigate workspaces next / previous
 bindsym $mod+Ctrl+Right workspace next
@@ -180,7 +171,7 @@ bindsym $mod+Ctrl+Left workspace prev
 
 # Open applications in specific workspace
 assign [class="Thunar"] $ws2
-assign [class="Google-chrome"] $ws3
+assign [class="firefox"] $ws3
 assign [class="vlc"] $ws5
 assign [class="libreoffice-startcenter"] $ws7
 
@@ -203,31 +194,31 @@ workspace_auto_back_and_forth yes
 ### Settings for Bar ###
 ########################
 # bar appearance
-#bindsym $mod+m bar mode toggle
-#bar {
-#        position top
-#        font pango:DejaVu Sans Mono 10
-#        status_command i3blocks -c ~/.config/i3/i3blocks.conf
-#        mode dock
-#        modifier None
-#        workspace_buttons yes
-#        separator_symbol "|"
-#        workspace_min_width 40
-#        strip_workspace_numbers yes
+bindsym $mod+m bar mode toggle
+bar {
+        position top
+        font pango:DejaVu Sans Mono 10
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        mode dock
+        modifier None
+        workspace_buttons yes
+        separator_symbol "|"
+        workspace_min_width 40
+        strip_workspace_numbers yes
 # Bar Colors
-# colors {
-#        background #222D31
-#        statusline #F9FAF9
-#        separator  #454947
+ colors {
+        background #222D31
+        statusline #F9FAF9
+        separator  #454947
 
         # Workspace_Type    Border  Backgr. Text
-#        focused_workspace  #16a085 #16a085 #292F34
-#        active_workspace   #16a085 #353836 #FDF6E3
-#        inactive_workspace #595B5B #222D31 #EEE8D5
-#        binding_mode       #16a085 #2C2C2C #F9FAF9
-#        urgent_workspace   #16a085 #FDF6E3 #E5201D
-#    }
-#}
+        focused_workspace  #16a085 #16a085 #292F34
+        active_workspace   #16a085 #353836 #FDF6E3
+        inactive_workspace #595B5B #222D31 #EEE8D5
+        binding_mode       #16a085 #2C2C2C #F9FAF9
+        urgent_workspace   #16a085 #FDF6E3 #E5201D
+    }
+}
 
 ######################
 ### Resize Windows ###
