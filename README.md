@@ -1,47 +1,75 @@
-# .vimrc
 
-## create new directory 
+## Apps I've Use
 ```bash
- mkdir  ~/.vim/undodir -p
- ```
+# feh -- setting wallpapers
+sudo pacman -S feh
+# chrome -- browser
+paru -S google-chrome
+# nemo -- file manager
+sudo pacman -S thunar
+# terminator -- terminal
+sudo pacman -S terminator
+# vscode/vim -- text-editor
+paru -S visual-studio-code
+# vlc -- video player
+sudo pacman -S vlc
+# libreoffice -- office
+sudo pacman -S libreoffice
+# vim  -- terminal-Texteditor
+sudo pacman -S vim
+# Font-Awesome -- icons
+sudo pacman -S ttf-font-awesome
+```
 
-## for plugins first download
+
+## App icons on bar
 ```bash
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
-    
-### to begin with plugins
-```vim
-call plug#begin('~/.vim/plugged')
-# plugins goes here
-call plug#begin('~/.vim/plugged')
+# clipit -- clipboard
+paru -S clipit
+# volumeicon -- volume options
+sudo pacman -S volumeicon
+# network-manager-applet -- network options
+sudo pacman -S network-manager-applet
+# power manager
+sudo pacman -S mate-power-manager
 ```
 
-## to find plugins
-> https://vimawesome.com/
+## Lock-screen
+> i am using i3lock which comes standard in arch
 
-# Other Stuff
-## to start Any Managers with startx
+## Volume
+> i am using alsa 
 ```bash
-vim .xinitrc
-exec managerName
-atartx
+sudo pacman -S alsa-utils
 ```
-## Config for urxvt or xterm
-> ~/.Xresources
+## Brightness
+> i have intel_backlight so i am using light
+```bash
+sudo pacman -S light
+```
+## AppMenu
+```bash
+sudo pacman -S rofi
+rofi -show drun 
+```
+# bar 
+> status_command i3blocks -c ~/.config/i3/i3blocks.conf
 
-## Music Player moc
+# XF86 HOT Keys
+## Volume Keys
 ```bash
-sudo pacman -S moc
-mkdir ~/.moc/
+XF86AudioRaiseVolume
+XF86AudioLowerVolume
+XF86AudioMute
 ```
-### default configuration for moc will be in, now copy the files to the newly created folder
+## brightness Keys
 ```bash
-cp /usr/share/doc/moc/ ~/.moc/
+XF86MonBrightnessUp
+XF86MonBrightnessDown
 ```
-## tap to click for wm's
+## Audio Keys
 ```bash
-sudo mkdir -p /etc/X11/xorg.conf.d
-sudo touch /etc/X11/xorg.conf.d/90-touchpad.conf
+XF86AudioPlay
+XF86AudioNext
+XF86AudioPrev
 ```

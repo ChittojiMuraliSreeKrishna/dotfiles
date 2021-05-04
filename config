@@ -1,0 +1,279 @@
+########################
+### Global Variables ###
+########################
+# mod keys
+set $mod Mod4
+set $alt Mod1
+
+# wallpapers
+set $lockImage ~/Pictures/lockscreen.png
+
+# app-variables
+set $terminal --no-startup-id alacritty
+set $power --no-startup-id mate-power-manager
+set $browser --no-startup-id firefox
+set $fileManager --no-startup-id thunar
+set $video --no-startup-id vlc
+set $textEditor --no-startup-id code
+set $office --no-startup-id libreoffice
+set $netApplet --no-startup-id nm-applet
+set $volume --no-startup-id volumeicon
+
+############################################
+### Apps or Config to run Always/onStart ###
+############################################
+# execute with login
+exec $netApplet
+exec $power
+exec $volume
+exec $music
+#exec xrdb ~/.Xresources
+exec nitrogen --restore
+exec --no-startup-id xss-lock --transfer-sleep-lock --i3lock --nofork
+
+# always executing
+exec_always picom --config ~/.config/picom.conf
+exec_always dunst
+
+###########################################
+### Settings for Sound/Brightness/Music ###
+###########################################
+# sound {alsa-utils}
+bindsym XF86AudioRaiseVolume exec "amixer sset Master 2%+; notify-send 'Volume Up'"
+bindsym XF86AudioLowerVolume exec "amixer sset Master 2%-; notify-send 'Volume Down'"
+bindsym XF86AudioMute exec amixer sset Master toggle
+
+# brightness {xorg-xbacklight}
+bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'"
+
+# music {moc}
+bindsym XF86AudioPlay exec mocp -p;exec notify-send 'Music Player' 'Started'
+bindsym XF86AudioNext exec mocp --next;exec notify-send 'Music Player' 'Next'
+bindsym XF86AudioPrev exec mocp --prev;exec notify-send 'Music Player' 'Previous'
+bindsym $alt+XF86AudioPlay exec mocp -s;exec notify-send 'Music Player' 'Stop'
+
+###############################
+### settings for Appearance ###
+###############################
+# font
+font pango:Sans Mono 10
+
+#title
+title_align center
+
+# borders
+default_border pixel 1
+default_floating_border normal
+hide_edge_borders vertical
+
+# change borders
+bindsym $mod+u border none;exec notify-send 'Border None'
+bindsym $mod+y border pixel 1;exec notify-send 'Border Pixel 1'
+bindsym $mod+n border normal;exec notify-send 'Border Normal'
+
+#########################################################
+### Settings for Focus/directions/Layout of Container ###
+#########################################################
+# focus keys
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+force_display_urgency_hint 500 ms
+
+# direction keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Focus Parent/Child
+bindsym $mod+a focus parent
+bindsym $mod+z focus child
+
+# split orientation
+bindsym $mod+h split h;exec notify-send 'tiling Changed' 'Horizontally'
+bindsym $mod+v split v;exec notify-send 'tiling Changed' 'Vertical'
+bindsym $mod+q split toggle
+
+# Toggle fullscreen
+bindsym $mod+f fullscreen toggle
+
+# layout keys
+bindsym $mod+s layout stacking;exec notify-send 'Layout Changed' 'Stacking'
+bindsym $mod+w layout tabbed;exec notify-send 'Layout Changed' 'Tabbed'
+bindsym $mod+e layout toggle split;exec notify-send 'Layout Changed' 'Split'
+bindsym $mod+Shift+space floating toggle;exec notify-send 'Layout Changed' 'Floating'
+bindsym $mod+space focus modetoggle
+
+######################################
+### setting General-usage/App Keys ###
+######################################
+# general usage keys
+bindsym $mod+Shift+r restart;exec notify-send 'i3 Restart'
+bindsym $mod+c reload;exec notify-send 'i3config Reload'
+bindsym $alt+F4 kill
+bindsym $mod+Return exec $terminal
+bindsym $mod+KP_Enter exec $terminal
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+XF86Search exec rofi -show run
+bindsym $mod+XF86Sleep exec -e poweroff
+bindsym $mod+l exec i3lock -i $lockImage -f -e
+bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym $alt+Escape exec "i3-nagbar -t warning -m 'Do you want to exit ?' -b 'Yes, exit i3' 'i3-msg exit'" 
+
+# application keys
+bindsym $mod+Ctrl+Return exec --no-startup-id $fileManager
+bindsym $mod+Ctrl+KP_Enter exec --no-startup-id $fileManager
+bindsym $mod+F2 exec --no-startup-id $browser
+bindsym $mod+shift+c exec --no-startup-id $textEditor
+bindsym $mod+shift+v exec --no-startup-id vlc
+bindsym $mod+shift+o exec --no-startup-id libreoffice
+bindsym $mod+Print exec --no-startup-id spectacle -f
+
+###############################
+### Settings for Workspaces ###
+###############################
+# workspace names
+ set $ws1 ""
+ set $ws2 ""
+ set $ws3 ""
+ set $ws4 ""
+ set $ws5 ""
+ set $ws6 ""
+ set $ws7 ""
+ set $ws8 ""
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+
+# move to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1;exec notify-send 'Moved Container To' '$WS1'
+bindsym $mod+Shift+2 move container to workspace $ws2;exec notify-send 'Moved Container To' '$ws2'
+bindsym $mod+Shift+3 move container to workspace $ws3;exec notify-send 'Moved Container To' '$ws3'
+bindsym $mod+Shift+4 move container to workspace $ws4;exec notify-send 'Moved Container To' '$ws4'
+bindsym $mod+Shift+5 move container to workspace $ws5;exec notify-send 'Moved Container To' '$ws5'
+bindsym $mod+Shift+6 move container to workspace $ws6;exec notify-send 'Moved Container To' '$ws6'
+bindsym $mod+Shift+7 move container to workspace $ws7;exec notify-send 'Moved Container To' '$ws7'
+bindsym $mod+Shift+8 move container to workspace $ws8;exec notify-send 'Moved Container To' '$ws8'
+
+# navigate workspaces next / previous
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+Left workspace prev
+
+# Open applications in specific workspace
+assign [class="Thunar"] $ws2
+assign [class="firefox"] $ws3
+assign [class="vlc"] $ws5
+assign [class="libreoffice-startcenter"] $ws7
+
+# Config for Applications
+for_window [class="Alacritty"] border pixel 1
+
+# Auto Back and Forth
+workspace_auto_back_and_forth yes
+
+# Workspace Theme
+# Class                   Border  Backgr. Text    Indic.
+  client.focused          #556064 #556064 #80FFF9 #FDF6E3
+  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
+  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+  client.placeholder      #000000 #0c0c0c #ffffff #000000
+  client.background       #2B2C2B
+
+########################
+### Settings for Bar ###
+########################
+# bar appearance
+bindsym $mod+m bar mode toggle
+bar {
+        position top
+        font pango:DejaVu Sans 12
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        mode dock
+        modifier None
+        workspace_buttons yes
+        separator_symbol "|"
+        workspace_min_width 40
+        strip_workspace_numbers yes
+        binding_mode_indicator yes
+# Bar Colors
+ colors {
+        background #222D31
+        statusline #F9FAF9
+        separator  #454947
+
+        # Workspace_Type    Border  Backgr. Text
+        focused_workspace  #16a085 #16a085 #292F34
+        active_workspace   #16a085 #353836 #FDF6E3
+        inactive_workspace #595B5B #222D31 #EEE8D5
+        binding_mode       #16a085 #2C2C2C #F9FAF9
+        urgent_workspace   #16a085 #FDF6E3 #E5201D
+    }
+}
+
+######################
+### Resize Windows ###
+######################
+bindsym $alt+r mode "resize";exec notify-send 'Resize Mode' 'Active'
+mode "resize"{
+    bindsym $alt+KP_Subtract resize shrink width 5 px or 5 ppt
+    bindsym $alt+KP_Add resize grow width 5 px or 5 ppt
+    bindsym $alt+Up resize grow height 5 px or 5 ppt
+    bindsym $alt+Down resize shrink height 5 px or 5 ppt
+    bindsym Escape mode "default";exec notify-send 'Resize Mode' 'Disabled'
+}
+
+############################
+### Settings for i3-gaps ###
+############################
+# general gaps config
+smart_gaps on
+smart_borders on
+gaps inner 7
+gaps outer 1
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
