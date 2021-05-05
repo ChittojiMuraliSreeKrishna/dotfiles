@@ -5,35 +5,20 @@
 set $mod Mod4
 set $alt Mod1
 
-# wallpapers
-set $lockImage ~/Pictures/lockscreen.png
-
 # app-variables
 set $terminal --no-startup-id alacritty
-set $power --no-startup-id mate-power-manager
-set $browser --no-startup-id firefox
+set $browser --no-startup-id google-chrome-stable
 set $fileManager --no-startup-id thunar
 set $video --no-startup-id vlc
 set $textEditor --no-startup-id code
 set $office --no-startup-id libreoffice
-set $netApplet --no-startup-id nm-applet
-set $volume --no-startup-id volumeicon
 
-############################################
-### Apps or Config to run Always/onStart ###
-############################################
-# execute with login
-exec $netApplet
-exec $power
-exec $volume
-exec $music
-exec xrdb ~/.Xresources
-exec nitrogen --restore
+##################
+### Auto-Start ###
+##################
+exec ~/.config/i3/Scripts/autostart.sh
+#exec xrdb ~/.Xresources
 exec --no-startup-id xss-lock --transfer-sleep-lock --i3lock --nofork
-
-# always executing
-exec_always picom --config ~/.config/picom.conf
-exec_always dunst
 
 ###########################################
 ### Settings for Sound/Brightness/Music ###
@@ -171,7 +156,7 @@ bindsym $mod+Ctrl+Left workspace prev
 
 # Open applications in specific workspace
 assign [class="Thunar"] $ws2
-assign [class="firefox"] $ws3
+assign [class="Google-chrome"] $ws3
 assign [class="vlc"] $ws5
 assign [class="libreoffice-startcenter"] $ws7
 
@@ -197,7 +182,7 @@ workspace_auto_back_and_forth yes
 bindsym $mod+m bar mode toggle
 bar {
         position top
-        font pango:DejaVu Sans Mono 10
+        font pango:DejaVu Sans 12
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
         mode dock
         modifier None
@@ -205,6 +190,7 @@ bar {
         separator_symbol "|"
         workspace_min_width 40
         strip_workspace_numbers yes
+        binding_mode_indicator yes
 # Bar Colors
  colors {
         background #222D31

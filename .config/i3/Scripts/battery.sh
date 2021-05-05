@@ -42,14 +42,11 @@ echo $full_text
 echo $short_text
 
 # consider color and urgent flag only on discharge
-if [ "$status" == "Discharging" ] && [ "$percent" -gt "90" ]; then
-  echo $color2 #color2/base0B
-elif [ "$status" == "Discharging" ] && [ "$percent" -gt "60" ]; then
-  echo $color3 #color3/base0A
-elif [ "$status" == "Discharging" ] && [ "$percent" -gt "40" ]; then
-  echo $color16 #color16/base09
+if [ "$status" == "Discharging" ] && [ "$percent" -gt "90" ];
+elif [ "$status" == "Discharging" ] && [ "$percent" -gt "60" ];
+elif [ "$status" == "Discharging" ] && [ "$percent" -gt "40" ];
 elif [ "$status" == "Discharging" ] && [ "$percent" -gt "10" ]; then
-  echo $color1 #color1/base08
+  echo $color1 
 elif [ "$status" == "Discharging" ]; then
   exit 33
 fi
