@@ -2,13 +2,13 @@
 ## Apps I've Use
 ```bash
 # feh -- setting wallpapers
-sudo pacman -S feh
+sudo pacman -S nitrogen
 # chrome -- browser
 paru -S google-chrome
 # nemo -- file manager
 sudo pacman -S thunar
 # terminator -- terminal
-sudo pacman -S terminator
+sudo pacman -S alacritty
 # vscode/vim -- text-editor
 paru -S visual-studio-code
 # vlc -- video player
