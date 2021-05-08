@@ -191,6 +191,7 @@ bar {
         workspace_min_width 40
         strip_workspace_numbers yes
         binding_mode_indicator yes
+        tray_output none
 # Bar Colors
  colors {
         background #222D31
