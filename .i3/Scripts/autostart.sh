@@ -2,7 +2,7 @@
 
 nitrogen --restore &
 nm-applet &
-mate-power-manager &
+xfce4-power-manager &
 volumeicon &
 picom --config ~/.config/picom.conf &
 dunst &
