@@ -53,7 +53,7 @@ sudo pacman -S rofi
 rofi -show drun 
 ```
 # bar 
-> status_command i3blocks -c ~/.config/i3/i3blocks.conf
+> status_command i3blocks -c ~/.i3/i3blocks.conf
 
 # XF86 HOT Keys
 ## Volume Keys
