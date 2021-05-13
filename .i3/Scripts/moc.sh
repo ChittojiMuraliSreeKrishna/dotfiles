@@ -1,7 +1,7 @@
 #!/bin/bash 
 
-media=$(mocp -Q '%song')
-echo -e "$media"
+media=$(mocp -Q '%file')
+echo -e "$media" | sed "s/.*\///"
 
 #PAUSE TRACK
 if [[ "${BLOCK_BUTTON}" -eq 1 ]];then

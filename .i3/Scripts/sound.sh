@@ -1,7 +1,8 @@
 #!/bin/bash
 
 sound=$(amixer get Master | awk '$0~/%/{print $4}' | tr -d '[]')
-echo -e "$sound"
+label= 
+echo -e "$label $sound"
 
 #Toggle audio
 if [[ "${BLOCK_BUTTON}" -eq 1 ]];then
@@ -16,3 +17,4 @@ elif [[ "${BLOCK_BUTTON}" -eq 5  ]];then
 	    amixer sset Master 2%-
 
 fi
+

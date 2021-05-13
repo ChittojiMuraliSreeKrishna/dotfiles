@@ -6,9 +6,9 @@ set $mod Mod4
 set $alt Mod1
 
 # app-variables
-set $terminal --no-startup-id urxvt
+set $terminal --no-startup-id alacritty
 set $browser --no-startup-id google-chrome-stable
-set $fileManager --no-startup-id pcmanfm
+set $fileManager --no-startup-id thunar
 set $video --no-startup-id vlc
 set $textEditor --no-startup-id code
 set $office --no-startup-id libreoffice
@@ -109,8 +109,8 @@ bindsym $mod+XF86Sleep exec poweroff
 bindsym $mod+l exec i3exit lock
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym $alt+Escape exec "i3-nagbar -t warning -m 'want to exit ?' -b 'Yes, exit i3' 'i3-msg exit'" 
-bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print exec --no-startup-id i3-scrot -s
+bindsym $mod+p exec --no-startup-id flameshot full
+bindsym $mod+Shift+p exec --no-startup-id flameshot gui
 
 # menu keys
 bindsym XF86Search exec morc_menu
@@ -162,13 +162,13 @@ bindsym $mod+Ctrl+Right workspace next;exec notify-send 'tile horizontally'
 bindsym $mod+Ctrl+Left workspace prev;exec notify-send 'tile vertically'
 
 # Open applications in specific workspace
-assign [class="Pcmanfm"] $ws2
+assign [class="Thunar"] $ws2
 assign [class="Google-chrome"] $ws3
 assign [class="vlc"] $ws5
 assign [class="libreoffice-startcenter"] $ws7
 
 # Config for Applications
-for_window [class="URxvt"] border pixel 1
+for_window [class="Alacritty"] border pixel 1
 
 # Auto Back and Forth
 workspace_auto_back_and_forth yes

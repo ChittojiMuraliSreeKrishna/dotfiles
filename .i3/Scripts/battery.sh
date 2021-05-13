@@ -27,10 +27,10 @@ else
     fi
   fi
   if [ "$status" == "Discharging" ]; then
-    full_text="$label"'('"$time"')'
+    full_text="$label $percent%"' ('"$time"')'
     short_text='- '"$percent"'%'
   elif [ "$status" == "Charging" ]; then
-    full_text="$label"'('"$time"')'
+    full_text="$label $percent%"' ('"$time"')'
     short_text=' '"$percent"'%'
   else
     full_text='Error parsing battery from acpi'
@@ -42,14 +42,18 @@ echo $full_text
 echo $short_text
 
 # consider color and urgent flag only on discharge
-if [ "$status" == "Discharging" ] && [ "$percent" -gt "90" ];
-elif [ "$status" == "Discharging" ] && [ "$percent" -gt "60" ];
-elif [ "$status" == "Discharging" ] && [ "$percent" -gt "40" ];
+if [ "$status" == "Discharging" ] && [ "$percent" -gt "90" ]; then
+    echo $color1
+elif [ "$status" == "Discharging" ] && [ "$percent" -gt "60" ]; then
+    echo $color7
+elif [ "$status" == "Discharging" ] && [ "$percent" -gt "40" ]; then
+    echo $color6
+elif [ "$status" == "Discharging" ] && [ "$percent" -gt "15"  ];then
+    echo $color0
 elif [ "$status" == "Discharging" ] && [ "$percent" -gt "10" ]; then
-  echo $color1 
+    echo $color2
 elif [ "$status" == "Discharging" ]; then
   exit 33
 fi
-
 exit 0
 
