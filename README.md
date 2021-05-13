@@ -1,3 +1,5 @@
+# i3wm
+![screenchot1](https://user-images.githubusercontent.com/62329524/118088656-e7d75200-b3b6-11eb-9916-621e6a9c2595.png)
 
 ## Apps I've Use
 ```bash
@@ -20,7 +22,6 @@ sudo pacman -S vim
 # Font-Awesome -- icons
 sudo pacman -S ttf-font-awesome
 ```
-
 
 ## App icons on bar
 ```bash
