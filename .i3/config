@@ -1,132 +1,10 @@
-########################
-### Global Variables ###
-########################
-# mod keys
-set $mod Mod4
+#######################
+### globalVariables ###
+#######################
+# modKeys
+set $win Mod4
 set $alt Mod1
 
-# app-variables
-set $terminal --no-startup-id alacritty
-set $browser --no-startup-id google-chrome-stable
-set $fileManager --no-startup-id thunar
-set $video --no-startup-id vlc
-set $textEditor --no-startup-id code
-set $office --no-startup-id libreoffice
-
-##################
-### Auto-Start ###
-##################
-exec ~/.i3/Scripts/autostart.sh
-exec xrdb ~/.Xresources
-exec --no-startup-id xss-lock --transfer-sleep-lock --i3lock --nofork
-
-###########################################
-### Settings for Sound/Brightness/Music ###
-###########################################
-# sound {alsa-utils}
-bindsym XF86AudioRaiseVolume exec "amixer sset Master 2%+; notify-send 'Volume Up'"
-bindsym XF86AudioLowerVolume exec "amixer sset Master 2%-; notify-send 'Volume Down'"
-bindsym XF86AudioMute exec amixer sset Master toggle
-
-# brightness {xorg-xbacklight}
-bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'"
-
-# music {moc}
-bindsym XF86AudioPlay exec mocp -p;exec notify-send 'Music Player' 'Started'
-bindsym XF86AudioNext exec mocp --next;exec notify-send 'Music Player' 'Next'
-bindsym XF86AudioPrev exec mocp --prev;exec notify-send 'Music Player' 'Previous'
-bindsym $alt+XF86AudioPlay exec mocp -s;exec notify-send 'Music Player' 'Stop'
-
-###############################
-### settings for Appearance ###
-###############################
-# font
-font pango:URWGothic-Book 11
-
-#title
-title_align center
-
-# focus
-focus_follows_mouse yes
-for_window [urgent=latest] focus
-
-# borders
-default_border normal
-default_floating_border normal
-hide_edge_borders vertical
-
-# change borders
-bindsym $mod+u border none;exec notify-send 'Border None'
-bindsym $mod+y border pixel 1;exec notify-send 'Border Pixel 1'
-bindsym $mod+n border normal;exec notify-send 'Border Normal'
-
-#########################################################
-### Settings for Focus/directions/Layout of Container ###
-#########################################################
-# focus keys
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-force_display_urgency_hint 500 ms
-
-# direction keys
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# Focus Parent/Child
-bindsym $mod+a focus parent
-bindsym $mod+z focus child
-
-# split orientation
-bindsym $mod+h split h;exec notify-send 'tiling Changed' 'Horizontally'
-bindsym $mod+v split v;exec notify-send 'tiling Changed' 'Vertical'
-bindsym $mod+q split toggle
-
-# Toggle fullscreen
-bindsym $mod+f fullscreen toggle
-
-# layout keys
-bindsym $mod+s layout stacking;exec notify-send 'Layout Changed' 'Stacking'
-bindsym $mod+w layout tabbed;exec notify-send 'Layout Changed' 'Tabbed'
-bindsym $mod+e layout toggle split;exec notify-send 'Layout Changed' 'Split'
-bindsym $mod+Shift+space floating toggle;exec notify-send 'Layout Changed' 'Floating'
-bindsym $mod+space focus modetoggle
-
-######################################
-### setting General-usage/App Keys ###
-######################################
-# general usage keys
-bindsym $mod+Shift+r restart;exec notify-send 'i3 Restart'
-bindsym $mod+c reload;exec notify-send 'i3config Reload'
-bindsym $alt+F4 kill
-bindsym $mod+Return exec $terminal
-bindsym $mod+KP_Enter exec $terminal
-bindsym $mod+XF86Sleep exec poweroff
-bindsym $mod+l exec i3exit lock
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym $alt+Escape exec "i3-nagbar -t warning -m 'want to exit ?' -b 'Yes, exit i3' 'i3-msg exit'" 
-bindsym $mod+p exec --no-startup-id flameshot full
-bindsym $mod+Shift+p exec --no-startup-id flameshot gui
-
-# menu keys
-bindsym XF86Search exec morc_menu
-bindsym $mod+d exec rofi -show drun
-
-# application keys
-bindsym $mod+Ctrl+Return exec --no-startup-id $fileManager
-bindsym $mod+Ctrl+KP_Enter exec --no-startup-id $fileManager
-bindsym $mod+F2 exec --no-startup-id $browser
-bindsym $mod+shift+c exec --no-startup-id $textEditor
-bindsym $mod+shift+v exec --no-startup-id vlc
-bindsym $mod+shift+o exec --no-startup-id libreoffice
-
-###############################
-### Settings for Workspaces ###
-###############################
 # workspace names
  set $ws1 1:
  set $ws2 2:
@@ -136,6 +14,106 @@ bindsym $mod+shift+o exec --no-startup-id libreoffice
  set $ws6 6:
  set $ws7 7:
  set $ws8 8:
+
+# applications
+set $terminal --no-startup-id alacritty
+set $browser --no-startup-id google-chrome-stable
+set $fileManager --no-startup-id thunar
+set $video --no-startup-id vlc
+set $textEditor --no-startup-id code
+set $office --no-startup-id libreoffice
+
+######################
+### General Config ###
+######################
+# appearance
+font:pongo:URWGothic-Book 11
+default_border normal
+default_floating_border normal
+hide_edge_borders vertical
+title_align center
+
+# focus
+focus_follows_mouse yes
+for_window [urgent=latest] focus
+
+# scripts
+exec ~/.i3/Scripts/autostart.sh
+#exec xrdb ~/.Xresources
+exec --no-startup-id xss-lock --transfer-sleep-lock --i3lock --nofork
+
+####################
+### General Keys ###
+####################
+# i3Keys
+bindsym $alt+Escape exec i3-msg exit
+bindsym $mod+l exec i3exit lock
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+c reload
+bindsym $alt+F4 kill
+
+# general usage
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+Return exec $terminal
+bindsym $mod+KP_Enter exec $terminal
+bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym $mod+p exec --no-startup-id flameshot full
+bindsym $mod+Shift+p exec --no-startup-id flameshot gui
+
+# change borders
+bindsym $mod+u border none;exec notify-send 'Border None'
+bindsym $mod+y border pixel 1;exec notify-send 'Border Pixel 1'
+bindsym $mod+n border normal;exec notify-send 'Border Normal'
+
+# change Focus
+bindsym $mod+a focus parent
+bindsym $mod+z focus child
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+force_display_urgency_hint 500 ms
+
+# move Focused Window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# workspace back and forth (with/without active container)
+workspace_auto_back_and_forth yes
+bindsym $mod+b workspace back_and_forth
+bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+
+# split Orientation
+bindsym $mod+h split h;exec notify-send 'tile Horizontally'
+bindsym $mod+v split v;exec notify-send 'tile Vertically'
+bindsym $mod+q split toggle
+
+# toggle fullScreen
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking;exec notify-send 'Layout Changed' 'Stacking'
+bindsym $mod+w layout tabbed;exec notify-send 'Layout Changed' 'Tabbed'
+bindsym $mod+e layout toggle split;exec notify-send 'Layout Changed' 'Split'
+bindsym $mod+Shift+space floating toggle;exec notify-send 'Layout Changed' 'Floating'
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# toggle sticky
+bindsym $mod+Shift+s sticky toggle
+
+#navigate workspaces next / previous
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+Left workspace prev
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad
+bindsym $mod+minus scratchpad show
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -157,10 +135,32 @@ bindsym $mod+Shift+6 move container to workspace $ws6;exec notify-send 'Moved Co
 bindsym $mod+Shift+7 move container to workspace $ws7;exec notify-send 'Moved Container To' '$ws7'
 bindsym $mod+Shift+8 move container to workspace $ws8;exec notify-send 'Moved Container To' '$ws8'
 
-# navigate workspaces next / previous
-bindsym $mod+Ctrl+Right workspace next;exec notify-send 'tile horizontally'
-bindsym $mod+Ctrl+Left workspace prev;exec notify-send 'tile vertically'
+# music keys {alsa-utils}
+bindsym XF86AudioRaiseVolume exec "amixer sset Master 2%+; notify-send 'Volume Up'"
+bindsym XF86AudioLowerVolume exec "amixer sset Master 2%-; notify-send 'Volume Down'"
+bindsym XF86AudioMute exec amixer sset Master toggle
 
+# brightness {xorg-xbacklight}
+bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'"
+
+# music {moc}
+bindsym XF86AudioPlay exec mocp -G;exec notify-send 'Music Player' 'Started'
+bindsym XF86AudioNext exec mocp -f;exec notify-send 'Music Player' 'Next'
+bindsym XF86AudioPrev exec mocp -r;exec notify-send 'Music Player' 'Previous'
+bindsym $alt+XF86AudioPlay exec mocp -s;exec notify-send 'Music Player' 'Stop'
+
+# application keys
+bindsym $mod+Ctrl+Return exec $fileManager
+bindsym $mod+Ctrl+KP_Enter exec $fileManager
+bindsym $mod+F2 exec $browser
+bindsym $mod+shift+c exec $textEditor
+bindsym $mod+shift+v exec $video
+bindsym $mod+shift+o exec $office
+
+##############################
+### window/workspace rules ###
+##############################
 # Open applications in specific workspace
 assign [class="Thunar"] $ws2
 assign [class="Google-chrome"] $ws3
@@ -170,11 +170,11 @@ assign [class="libreoffice-startcenter"] $ws7
 # Config for Applications
 for_window [class="Alacritty"] border pixel 1
 
-# Auto Back and Forth
-workspace_auto_back_and_forth yes
-
-# Workspace Theme
-# Class                   Border  Backgr. Text    Indic.
+##############
+### colors ###
+##############
+# Theme colors
+# class                   border  backgr. text    indic.   child_border
   client.focused          #556064 #556064 #80FFF9 #FDF6E3
   client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
   client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
@@ -182,9 +182,9 @@ workspace_auto_back_and_forth yes
   client.placeholder      #000000 #0c0c0c #ffffff #000000
   client.background       #2B2C2B
 
-########################
-### Settings for Bar ###
-########################
+###########
+### Bar ###
+###########
 # bar appearance
 bindsym $mod+m bar mode toggle
 bar {
@@ -213,7 +213,6 @@ bar {
         urgent_workspace   #16a085 #FDF6E3 #E5201D
     }
 }
-
 ######################
 ### Resize Windows ###
 ######################
@@ -270,3 +269,12 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+
+
+
+
+
+
+
+
