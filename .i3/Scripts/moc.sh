@@ -1,18 +1,13 @@
 #!/bin/bash 
 
-media=$(mocp -Q '%file')
-echo -e "$media" | sed "s/.*\///"
+label=
+media=$(mocp -Q '%file' | sed "s/.*\///")
+echo -e "$label: $media"
 
-#PAUSE TRACK
-if [[ "${BLOCK_BUTTON}" -eq 1 ]];then
-	mocp -G
+case $BLOCK_BUTTON in
+    1) mocp -G ;;
+    4) mocp -f ;;
+    5) mocp -r ;;
+esac
 
-## PREVIOUS TRACK
-elif [[ "${BLOCK_BUTTON}" -eq 5 ]];then 
-	mocp -r
 
-## NEXT TRACK
-elif [[ "${BLOCK_BUTTON}" -eq 4 ]];then
-	mocp -f
-
-fi
