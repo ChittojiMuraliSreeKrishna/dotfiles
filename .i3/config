@@ -18,7 +18,7 @@ set $alt Mod1
 # applications
 set $terminal --no-startup-id alacritty
 set $browser --no-startup-id google-chrome-stable
-set $fileManager --no-startup-id thunar
+set $fileManager --no-startup-id dolphin
 set $video --no-startup-id vlc
 set $textEditor --no-startup-id code
 set $office --no-startup-id libreoffice
@@ -47,122 +47,123 @@ exec --no-startup-id xss-lock --transfer-sleep-lock --i3lock --nofork
 ####################
 # i3Keys
 bindsym $alt+Escape exec i3-msg exit
-bindsym $mod+l exec i3exit lock
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+c reload
+bindsym $win+l exec i3exit lock
+bindsym $win+Shift+r restart
+bindsym $win+Ctrl+c reload
 bindsym $alt+F4 kill
 
 # general usage
-bindsym $mod+d exec rofi -show drun
-bindsym $mod+Return exec $terminal
-bindsym $mod+KP_Enter exec $terminal
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym $mod+p exec --no-startup-id flameshot full
-bindsym $mod+Shift+p exec --no-startup-id flameshot gui
+bindsym $win+d exec rofi -show drun
+bindsym $win+Return exec $terminal
+bindsym $win+KP_Enter exec $terminal
+bindsym $win+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym $win+p exec --no-startup-id flameshot full
+bindsym $win+Shift+p exec --no-startup-id flameshot gui
 
 # change borders
-bindsym $mod+u border none;exec notify-send 'Border None'
-bindsym $mod+y border pixel 1;exec notify-send 'Border Pixel 1'
-bindsym $mod+n border normal;exec notify-send 'Border Normal'
+bindsym $win+u border none;exec notify-send 'Border None'
+bindsym $win+y border pixel 1;exec notify-send 'Border Pixel 1'
+bindsym $win+n border normal;exec notify-send 'Border Normal'
 
 # change Focus
-bindsym $mod+a focus parent
-bindsym $mod+z focus child
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $win+a focus parent
+bindsym $win+z focus child
+bindsym $win+Left focus left
+bindsym $win+Down focus down
+bindsym $win+Up focus up
+bindsym $win+Right focus right
 force_display_urgency_hint 500 ms
 
 # move Focused Window
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $win+Shift+Left move left
+bindsym $win+Shift+Down move down
+bindsym $win+Shift+Up move up
+bindsym $win+Shift+Right move right
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
-bindsym $mod+b workspace back_and_forth
-bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+bindsym $win+b workspace back_and_forth
+bindsym $win+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split Orientation
-bindsym $mod+h split h;exec notify-send 'tile Horizontally'
-bindsym $mod+v split v;exec notify-send 'tile Vertically'
-bindsym $mod+q split toggle
+bindsym $win+h split h;exec notify-send 'tile Horizontally'
+bindsym $win+v split v;exec notify-send 'tile Vertically'
+bindsym $win+q split toggle
 
 # toggle fullScreen
-bindsym $mod+f fullscreen toggle
+bindsym $win+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking;exec notify-send 'Layout Changed' 'Stacking'
-bindsym $mod+w layout tabbed;exec notify-send 'Layout Changed' 'Tabbed'
-bindsym $mod+e layout toggle split;exec notify-send 'Layout Changed' 'Split'
-bindsym $mod+Shift+space floating toggle;exec notify-send 'Layout Changed' 'Floating'
+bindsym $win+s layout stacking;exec notify-send 'Layout Changed' 'Stacking'
+bindsym $win+w layout tabbed;exec notify-send 'Layout Changed' 'Tabbed'
+bindsym $win+e layout toggle split;exec notify-send 'Layout Changed' 'Split'
+bindsym $win+Shift+space floating toggle;exec notify-send 'Layout Changed' 'Floating'
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $win+space focus mode_toggle
 
 # toggle sticky
-bindsym $mod+Shift+s sticky toggle
+bindsym $win+Shift+s sticky toggle
 
 #navigate workspaces next / previous
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
+bindsym $win+Ctrl+Right workspace next
+bindsym $win+Ctrl+Left workspace prev
 
 # move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $win+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad
-bindsym $mod+minus scratchpad show
+bindsym $win+minus scratchpad show
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
+bindsym $win+1 workspace $ws1
+bindsym $win+2 workspace $ws2
+bindsym $win+3 workspace $ws3
+bindsym $win+4 workspace $ws4
+bindsym $win+5 workspace $ws5
+bindsym $win+6 workspace $ws6
+bindsym $win+7 workspace $ws7
+bindsym $win+8 workspace $ws8
 
 # move to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1;exec notify-send 'Moved Container To' '$WS1'
-bindsym $mod+Shift+2 move container to workspace $ws2;exec notify-send 'Moved Container To' '$ws2'
-bindsym $mod+Shift+3 move container to workspace $ws3;exec notify-send 'Moved Container To' '$ws3'
-bindsym $mod+Shift+4 move container to workspace $ws4;exec notify-send 'Moved Container To' '$ws4'
-bindsym $mod+Shift+5 move container to workspace $ws5;exec notify-send 'Moved Container To' '$ws5'
-bindsym $mod+Shift+6 move container to workspace $ws6;exec notify-send 'Moved Container To' '$ws6'
-bindsym $mod+Shift+7 move container to workspace $ws7;exec notify-send 'Moved Container To' '$ws7'
-bindsym $mod+Shift+8 move container to workspace $ws8;exec notify-send 'Moved Container To' '$ws8'
+bindsym $win+Shift+1 move container to workspace $ws1;exec notify-send 'Moved Container To' '$WS1'
+bindsym $win+Shift+2 move container to workspace $ws2;exec notify-send 'Moved Container To' '$ws2'
+bindsym $win+Shift+3 move container to workspace $ws3;exec notify-send 'Moved Container To' '$ws3'
+bindsym $win+Shift+4 move container to workspace $ws4;exec notify-send 'Moved Container To' '$ws4'
+bindsym $win+Shift+5 move container to workspace $ws5;exec notify-send 'Moved Container To' '$ws5'
+bindsym $win+Shift+6 move container to workspace $ws6;exec notify-send 'Moved Container To' '$ws6'
+bindsym $win+Shift+7 move container to workspace $ws7;exec notify-send 'Moved Container To' '$ws7'
+bindsym $win+Shift+8 move container to workspace $ws8;exec notify-send 'Moved Container To' '$ws8'
 
 # music keys {alsa-utils}
-bindsym XF86AudioRaiseVolume exec "amixer sset Master 2%+; notify-send 'Volume Up'"
-bindsym XF86AudioLowerVolume exec "amixer sset Master 2%-; notify-send 'Volume Down'"
-bindsym XF86AudioMute exec amixer sset Master toggle
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK +2%; notify-send 'Volume Up'"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -2%; notify-send 'Volume Down'"
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK toggle
 
 # brightness {xorg-xbacklight}
 bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'"
 bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'"
 
 # music {moc}
+bindsym $win+XF86AudioPlay exec mocp -p;exec notify-send 'Music Player' 'Started'
 bindsym XF86AudioPlay exec mocp -G;exec notify-send 'Music Player' 'Started'
 bindsym XF86AudioNext exec mocp -f;exec notify-send 'Music Player' 'Next'
 bindsym XF86AudioPrev exec mocp -r;exec notify-send 'Music Player' 'Previous'
 bindsym $alt+XF86AudioPlay exec mocp -s;exec notify-send 'Music Player' 'Stop'
 
 # application keys
-bindsym $mod+Ctrl+Return exec $fileManager
-bindsym $mod+Ctrl+KP_Enter exec $fileManager
-bindsym $mod+F2 exec $browser
-bindsym $mod+shift+c exec $textEditor
-bindsym $mod+shift+v exec $video
-bindsym $mod+shift+o exec $office
+bindsym $win+Ctrl+Return exec $fileManager
+bindsym $win+Ctrl+KP_Enter exec $fileManager
+bindsym $win+F2 exec $browser
+bindsym $win+shift+c exec $textEditor
+bindsym $win+shift+v exec $video
+bindsym $win+shift+o exec $office
 
 ##############################
 ### window/workspace rules ###
 ##############################
 # Open applications in specific workspace
-assign [class="Thunar"] $ws2
+assign [class="dolphin"] $ws2
 assign [class="Google-chrome"] $ws3
 assign [class="vlc"] $ws5
 assign [class="libreoffice-startcenter"] $ws7
@@ -186,7 +187,7 @@ for_window [class="Alacritty"] border pixel 1
 ### Bar ###
 ###########
 # bar appearance
-bindsym $mod+m bar mode toggle
+bindsym $win+m bar mode toggle
 bar {
         position top
         font pango:DejaVu Sans 12
@@ -237,7 +238,7 @@ gaps outer 1
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
+bindsym $win+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
