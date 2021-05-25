@@ -114,13 +114,13 @@ keys = [
         ]
 
 group_names = [("1.", {'layout': 'ratiotile'}),
-                ("2.", {'layout': 'ratiotile'}),
-                ("3.", {'layout': 'ratiotile'}),
-                ("4.", {'layout': 'ratiotile'}),
+                ("2.", {'layout': 'ratiotile', 'matches':[Match(wm_class=["Thunar"])]}),
+                ("3.", {'layout': 'ratiotile', 'matches':[Match(wm_class=["Google-chrome"])]}),
+                ("4.", {'layout': 'ratiotile', 'matches':[Match(wm_class=["libreoffice-startcenter"])]}),
                 ("5.", {'layout': 'ratiotile'}),
                 ("6.", {'layout': 'ratiotile'}),
                 ("7.", {'layout': 'ratiotile'}),
-                ("8.", {'layout': 'ratiotile'})]
+                ("8.", {'layout': 'ratiotile','matches':[Match(wm_class=["vlc"])]})]
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
 
@@ -134,10 +134,8 @@ layout_theme = {"border_width": 1,
                 "border_normal": "1D2330"}
 
 layouts = [
-        layout.Tile(**layout_theme),
+        layout.MonadWide(**layout_theme),
         layout.RatioTile(**layout_theme),
-        layout.Stack(**layout_theme),
-        layout.Columns(**layout_theme),
         layout.Max(**layout_theme),
         ]
 
