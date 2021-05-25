@@ -202,11 +202,18 @@ screens = [
                         fontsize = 15,
                         backlight_name = 'intel_backlight'
                         ),
-                    widget.Systray(
-                        background = colors[1],
-                        foreground=colors[2],
-                        padding=3
+                    widget.TextBox(
+                        text = '',
+                        background = colors[2],
+                        foreground = colors[0],
+                        fontsize = 15,
+                        padding = 3
                         ),
+                    widget.Volume(
+                            background = colors[2],
+                            fontsize = 15,
+                            foreground = colors[0]
+                            ),
                     widget.Sep(
                             linewidth = 2,
                             padding = 6,
@@ -214,7 +221,7 @@ screens = [
                             background = colors[0]
                             ),
                     widget.TextBox(
-                        text = ':',
+                             text = ':',
                             foreground = colors[3],
                             background = colors[0],
                             fontsize = 18,
@@ -235,8 +242,8 @@ screens = [
                     widget.CurrentLayout(
                             background = colors[0],
                             foreground = colors[2],
-                            fontsize = 16,
-                            padding = 5
+                            fontshadow = colors[4],
+                            fontsize = 14
                             ),
                     widget.Sep(
                         linewidth = 2,
