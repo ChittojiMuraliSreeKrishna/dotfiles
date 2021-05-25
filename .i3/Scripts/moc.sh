@@ -2,7 +2,7 @@
 
 label=
 media=$(mocp -Q '%file' | sed "s/.*\///")
-echo -e "$label: $media"
+echo -e "$label: <i>$media</i>"
 
 case $BLOCK_BUTTON in
     1) mocp -G ;;

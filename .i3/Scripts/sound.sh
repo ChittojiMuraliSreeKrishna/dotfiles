@@ -18,7 +18,7 @@ volume=$(echo "$sinks" | grep "Volume: " | tail -2 | head -1 | awk '{print $5}' 
 if [ -n "$isbluetooth" ]; then
   color="#1E88E5"
   if [ "$ismuted" = "yes" ]; then
-    color="#997CC5"
+    color="#990000"
   fi
 elif [ -n "$isheadphone" ]; then
   color="#00A900"
@@ -28,7 +28,7 @@ elif [ -n "$isheadphone" ]; then
 elif [ "$ismuted" = "yes" ]; then
   color="#A0A0A0"
 else
-  color="#dddddd"
+  color="#000000"
 fi
 
 printf "<span color='%s'>" "$color"
@@ -37,12 +37,11 @@ if [ "$ismuted" = "yes" ]; then
   printf "<s> "
 fi
 if [ -n "$isbluetooth" ]; then
-  printf "<span fallback='true'>  </span>"
-fi
-if [ "$volume" -ge 40 ]; then
-  printf "<span fallback='true'>  </span>%s" "$volume"
-else
-  printf "<span fallback='true'>  </span>%s" "$volume"
+    printf "<b>: $volume</b>"
+elif [ -n "$isheadphone" ]; then
+    printf "<b>: $volume</b>"
+else 
+    printf "<b>: $volume </b>"
 fi
 
 printf "<small>%%</small>"

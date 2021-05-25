@@ -2,7 +2,7 @@
 
 com=$(light -G)
 label= 
-echo -e "$label ${com%.*}%"
+echo -e "<b>$label ${com%.*}%</b>"
 
 if [[ "${BLOCK_BUTTON}" -eq 5 ]];then 
 	    light -A 10

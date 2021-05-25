@@ -38,8 +38,8 @@ else
   fi
 fi
 
-echo $full_text
-echo $short_text
+echo -e "<b>$full_text</b>"
+echo -e "<b>$short_text</b>"
 
 # consider color and urgent flag only on discharge
 if [ "$status" == "Discharging" ] && [ "$percent" -gt "90" ]; then
