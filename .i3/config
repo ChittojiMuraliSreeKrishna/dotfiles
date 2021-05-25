@@ -16,7 +16,7 @@ set $alt Mod1
  set $ws8 8:
 
 # applications
-set $terminal --no-startup-id konsole
+set $terminal --no-startup-id alacritty
 set $browser --no-startup-id google-chrome-stable
 set $fileManager --no-startup-id dolphin
 set $video --no-startup-id vlc
