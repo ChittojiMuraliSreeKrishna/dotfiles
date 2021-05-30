@@ -1,8 +1,8 @@
 * {
-    text-color:  #ffeedd;
-    background-color:  rgba(0,43,54,0.5);
-    dark: #073642;
-    highlight:     bold #fdf6e3;
+    text-color:  #fbf1c7;
+    background-color: #282828;
+    dark: #282828;
+    highlight:     bold #d79921;
     font: "Monospace 15";
 }
 window {
@@ -11,27 +11,27 @@ window {
     location: west;
     anchor:   west;
     border:  0px 2px 0px 0px;
-    text-color: #839496;
+    text-color: #282828;
 }
 
 mode-switcher {
     border: 2px 0px 0px 0px;
-    background-color: #2aa198;
+    background-color: #458588;
     padding: 4px;
 }
 button selected {
-    border-color: #859900;
-    text-color: #eee8d5;
+    border-color: #689d6a;
+    text-color: #689d6a;
 }
 inputbar {
-    background-color: #073642;
-    text-color: #839496;
+    background-color: #98971a;
+    text-color: #282828;
     padding: 4px;
     border: 0px 0px 2px 0px;
 }
 mainbox {
     expand: true;
-    background-color: #1c1c1cee;
+    background-color: #98971a;
     spacing: 1em;
 }
 listview {
@@ -40,13 +40,14 @@ listview {
     lines: 0;
 }
 element selected  normal {
-    background-color: #268bd2;
+    background-color: #fbf1c7;
+    text-color: #282828;
 }
 element normal active {
-    text-color: #6c71c4;
+    text-color: #458588;
 }
 element normal urgent {
-    text-color: #dc322f;
+    text-color: #cc241d;
 }
 element alternate normal {
 }
@@ -57,8 +58,8 @@ element alternate urgent {
     text-color: #cb4b16;
 }
 element selected active {
-    background-color: lightblue;
-    text-color: @dark;
+    background-color: #458588;
+    text-color: #282828;
 }
 element selected urgent {
     background-color: #586e75;

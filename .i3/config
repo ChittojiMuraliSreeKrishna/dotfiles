@@ -18,20 +18,29 @@ set $alt Mod1
 # applications
 set $terminal --no-startup-id alacritty
 set $browser --no-startup-id google-chrome-stable
-set $fileManager --no-startup-id dolphin
+set $fileManager --no-startup-id thunar
 set $video --no-startup-id vlc
 set $textEditor --no-startup-id code
 set $office --no-startup-id libreoffice
+
+# colors
+set $dark #282828
+set $light #fbf1c7
+set $red #cc241d
+set $green #98971a
+set $blue #458588
+set $yellow #d79921
+set $aqua #689d6a
 
 ######################
 ### General Config ###
 ######################
 # appearance
-font:pongo:URWGothic-Book 11
+font:pongo:Sans Mono 11
 default_border normal
 default_floating_border normal
 hide_edge_borders vertical
-title_align center
+title_align left
 
 # focus
 focus_follows_mouse yes
@@ -54,9 +63,10 @@ bindsym $alt+F4 kill
 
 # general usage
 bindsym $win+d exec rofi -show drun
+bindsym $win+Tab exec rofi -show window
 bindsym $win+Return exec $terminal
 bindsym $win+KP_Enter exec $terminal
-bindsym $win+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym $win+Ctrl+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym $win+p exec --no-startup-id flameshot full
 bindsym $win+Shift+p exec --no-startup-id flameshot gui
 
@@ -136,9 +146,9 @@ bindsym $win+Shift+7 move container to workspace $ws7;exec notify-send 'Moved Co
 bindsym $win+Shift+8 move container to workspace $ws8;exec notify-send 'Moved Container To' '$ws8'
 
 # music keys {alsa-utils}
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +2%; notify-send 'Volume Up'"
-bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -2%; notify-send 'Volume Down'"
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK toggle
+bindsym XF86AudioRaiseVolume exec "amixer sset Master 2%+; notify-send 'Volume Up'"
+bindsym XF86AudioLowerVolume exec "amixer sset Master 2%-; notify-send 'Volume Down'"
+bindsym XF86AudioMute exec amixer sset Master toggle
 
 # brightness {xorg-xbacklight}
 bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'"
@@ -163,7 +173,7 @@ bindsym $win+shift+o exec $office
 ### window/workspace rules ###
 ##############################
 # Open applications in specific workspace
-assign [class="dolphin"] $ws2
+assign [class="Thunar"] $ws2
 assign [class="Google-chrome"] $ws3
 assign [class="vlc"] $ws5
 assign [class="libreoffice-startcenter"] $ws7
@@ -176,12 +186,12 @@ for_window [class="Alacritty"] border pixel 1
 ##############
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3
-  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-  client.placeholder      #000000 #0c0c0c #ffffff #000000
-  client.background       #2B2C2B
+  client.focused          $light $light $blue $blue
+  client.focused_inactive $dark $dark $green $green
+  client.unfocused        $dark $dark $yellow $yellow
+  client.urgent           $red $red $dark $dark
+  client.placeholder      $dark $light $aqua $aqua
+  client.background       $dark
 
 ###########
 ### Bar ###
@@ -190,7 +200,7 @@ for_window [class="Alacritty"] border pixel 1
 bindsym $win+m bar mode toggle
 bar {
         position top
-        font pango:DejaVu Sans 12
+        font pango:Sans Mono 12
         status_command i3blocks -c ~/.i3/i3blocks.conf
         mode dock
         modifier None
@@ -199,19 +209,17 @@ bar {
         workspace_min_width 40
         strip_workspace_numbers yes
         binding_mode_indicator yes
-        tray_output none
+        #tray_output none
 # Bar Colors
  colors {
-        background #222D31
-        statusline #F9FAF9
-        separator  #454947
+        background $dark
+        statusline $light
+        separator  $yellow
 
         # Workspace_Type    Border  Backgr. Text
-        focused_workspace  #16a085 #16a085 #292F34
-        active_workspace   #16a085 #353836 #FDF6E3
-        inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
+        focused_workspace  $yellow $green $dark
+        inactive_workspace $dark $dark $blue
+        urgent_workspace   $red $red $light
     }
 }
 ######################
@@ -270,12 +278,4 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-
-
-
-
-
-
-
 
