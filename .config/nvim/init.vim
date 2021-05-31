@@ -1,6 +1,124 @@
-source $HOME/.config/nvim/general.vim
-source $HOME/.config/nvim/keybindings.vim
+" Syntax and file Types
+syntax on
+filetype plugin on
 
+" Spellings
+set spell
+set spelllang=en_us
+
+" Encoding
+set termencoding=utf-8
+set encoding=utf-8
+
+" Cursor
+set guicursor=
+
+" Scrolling
+set scrolloff=8
+
+" History
+set history=1000
+set showcmd
+
+" Setting Mouse
+set mouse=a
+
+" Ignore Case & Searching
+set ignorecase
+set smartcase
+set incsearch
+set nohlsearch
+
+" Line numbers
+set number
+set relativenumber
+
+" Sign Column
+set signcolumn=yes
+
+" Indentation
+set autoindent
+set noexpandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set modeline
+set textwidth=99
+set copyindent
+
+" Error bells
+set noerrorbells
+set visualbell
+
+" Undo file & Undo directory
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+
+" Ruler
+set ruler
+
+" Mode
+set showmode
+
+" Title
+set title
+
+" Fold Method
+set foldmethod=indent
+set foldlevelstart=99
+
+" Setting CursorLine
+set cursorline
+
+" ColumnWrap
+set colorcolumn=90
+
+" Status Line
+set laststatus=2
+set cmdheight=1
+
+" Set Clipboard
+set clipboard=unnamed
+
+" Inccommand
+set inccommand=nosplit
+
+" Wrapping
+set wrap
+set breakindent
+
+" Supports 256 colors
+set t_Co=256
+
+" ############################
+" Extra Options
+" ############################
+" Chars
+set fillchars+=vert:\
+
+" White Spaces
+if &encoding == 'utf-8'
+	set list listchars=trail:»,tab:»-
+endif
+
+" omniCompletion
+augroup markdown
+	au!
+	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup END
+
+" Nvim Colors
+if has('termguicolors')
+    set termguicolors
+endif
+
+" ############################
+" PLUGINS
+" ############################
 " plugs { https://vimawesome.com/ }
 call plug#begin('~/.vim/plugged')
 Plug 'gruvbox-community/gruvbox'
@@ -34,7 +152,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'jremmen/vim-ripgrep'
 call plug#end()
 
-" Setting ColorScheme
+" Setting Color Scheme
 colorscheme gruvbox
 highlight ColorScheme guibg=dark ctermbg=0
 
@@ -75,3 +193,35 @@ endfunction
 " Indent Line
 let g:indentLine_char = '| '
 let g:indentLine_color_gui = '#83a598'
+
+" ############################
+" KEYBINDINGS
+" ############################
+let mapleader =" "
+
+" Switch Between Splits
+nnoremap <silent><leader><Left> :wincmd h<CR>
+nnoremap <silent><leader><Right> :wincmd l<CR>
+nnoremap <silent><leader><Down> :wincmd j<CR>
+nnoremap <silent><leader><Up> :wincmd k<CR>
+
+" Switch Between Tabs
+nnoremap <silent><S-TAB> :tabp<CR>
+nnoremap <silent><TAB> :tabn<CR>
+
+" Resize Splits
+nnoremap <silent><leader>+ :vertical resize +5<CR>
+nnoremap <silent><leader>- :vertical resize -5<CR>
+
+" New tab
+nnoremap <silent><C-t> :tabnew <CR>
+
+" Open Terminal
+map <silent><c-n> :call OpenTerminal()<CR>
+
+" Nerd Tree
+nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+
+" Add semicolumn at the end of the line
+nnoremap <Leader>; g_a;<Esc>
+
