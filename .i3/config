@@ -37,10 +37,9 @@ set $aqua #689d6a
 ######################
 # appearance
 font:pongo:Sans Mono 11
-default_border normal
-default_floating_border normal
+default_border pixel 1
+default_floating_border pixel 1
 hide_edge_borders vertical
-title_align left
 
 # focus
 focus_follows_mouse yes
@@ -56,7 +55,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock --i3lock --nofork
 ####################
 # i3Keys
 bindsym $alt+Escape exec i3-msg exit
-bindsym $win+l exec i3exit lock
+bindsym $win+l exec i3lock
 bindsym $win+Shift+r restart
 bindsym $win+Ctrl+c reload
 bindsym $alt+F4 kill
@@ -178,9 +177,6 @@ assign [class="Google-chrome"] $ws3
 assign [class="vlc"] $ws5
 assign [class="libreoffice-startcenter"] $ws7
 
-# Config for Applications
-for_window [class="Alacritty"] border pixel 1
-
 ##############
 ### colors ###
 ##############
@@ -200,16 +196,15 @@ for_window [class="Alacritty"] border pixel 1
 bindsym $win+m bar mode toggle
 bar {
         position top
-        font pango:Sans Mono 12
-        status_command i3blocks -c ~/.i3/i3blocks.conf
+        font pango:Dejavu Sans Mono 12
+        status_command i3blocks -c $HOME/.i3/bar/topbar.conf
         mode dock
-        modifier None
         workspace_buttons yes
         separator_symbol "|"
         workspace_min_width 40
         strip_workspace_numbers yes
         binding_mode_indicator yes
-        #tray_output none
+        tray_output none
 # Bar Colors
  colors {
         background $dark
@@ -221,6 +216,17 @@ bar {
         inactive_workspace $dark $dark $blue
         urgent_workspace   $red $red $light
     }
+}
+bar {
+	position bottom
+    tray_output primary
+    separator_symbol "|"
+	status_command i3blocks -c $HOME/.i3/bar/bottombar.conf
+    font pango:Dejavu Sans Mono 9
+	workspace_buttons no
+	colors{
+		background $dark
+	}
 }
 ######################
 ### Resize Windows ###
@@ -241,7 +247,7 @@ mode "resize"{
 smart_gaps on
 smart_borders on
 gaps inner 7
-gaps outer 1
+gaps outer 0
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
