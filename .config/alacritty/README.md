@@ -1,6 +1,6 @@
 # Alacritty
 
-````````````~~```bash
+```bash
 sudo pacman -S alacritty
 ```
  ## config file
