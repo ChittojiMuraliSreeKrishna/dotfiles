@@ -3,8 +3,8 @@ let mapleader =" "
 " movements
 nnoremap <silent><leader><Left> :wincmd h<CR>
 nnoremap <silent><leader><Right> :wincmd l<CR>
-nnoremap <silent><leader><Up> :wincmd j<CR>
-nnoremap <silent><leader><Down> :wincmd k<CR>
+nnoremap <silent><leader><Up> :wincmd k<CR>
+nnoremap <silent><leader><Down> :wincmd j<CR>
 
 " switch between tabs
 nnoremap <silent><TAB> :tabn<CR>
