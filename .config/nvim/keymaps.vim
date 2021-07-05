@@ -1,30 +1,39 @@
-let mapleader =" "
-
-" movements
-nnoremap <silent><leader><Left> :wincmd h<CR>
-nnoremap <silent><leader><Right> :wincmd l<CR>
+" Movements
 nnoremap <silent><leader><Up> :wincmd k<CR>
 nnoremap <silent><leader><Down> :wincmd j<CR>
+nnoremap <silent><leader><Left> :wincmd h<CR>
+nnoremap <silent><leader><Right> :wincmd l<CR>
 
-" switch between tabs
+" Tabs switching
 nnoremap <silent><TAB> :tabn<CR>
-nnoremap <silent><S-TAB> :tabp<CR>
+nnoremap <silent><S-TAB> :tabn<CR>
 
-" resize splits
+" Resize Tabs
 nnoremap <silent><leader>+ :vertical resize +5<CR>
 nnoremap <silent><leader>- :vertical resize -5<CR>
 
-" new tab
+" New Tab
 nnoremap <silent><C-t> :tabnew<CR>
 
-" open terminal
-nnoremap <silent><C-n> :call OpenTerminal()<CR>
+" Quit All
+nnoremap <silent><leader>q :xa<CR>
 
-" nerdtree
+" Nerdtree
 nnoremap <silent><C-b> :NERDTreeToggle<CR>
 
-" add semicolumn
+" Add Semicolumn
 nnoremap <silent><leader>; g_a;<Esc>
 
-" quit all
-nnoremap <silent><leader>q :xa<CR>
+
+" Open Terminal
+nnoremap <silent><C-n> :call OpenTerminal()<CR>
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,4 @@
-" plugs { https://vimawesome.com/ }
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'gregsexton/matchtag'
@@ -10,6 +9,7 @@ Plug 'prettier/prettier'
 Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -27,6 +27,9 @@ Plug 'justinj/vim-react-snippets'
 
 " Extra Plugs
 Plug 'mbbill/undotree'
+Plug 'junegunn/goyo.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'jremmen/vim-ripgrep'
+Plug 'tpope/vim-surround'
+
 call plug#end()

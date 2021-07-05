@@ -1,14 +1,9 @@
-" cahars
+" Cahars
 set fillchars+=vert:\
 
-" whitespaces
+" Whitespaces
 if &encoding == 'utf-8'
 	set list listchars=trail:»,tab:»-
-endif
-
-" Nvim Colors
-if has('termguicolors')
-    set termguicolors
 endif
 
 " To Open Terminal

@@ -1,75 +1,92 @@
-" set encoding
-set encoding=utf-8
-
-" set syntax & fileTypes
-syntax on
+" General
+set title
+set ruler
+set emoji
+set hidden
+set nowrap
+set nolist
+set autoread
+set showmode
+set wildmenu
+set noshowcmd
+set linebreak
+set lazyredraw
+set nocompatible
+set termguicolors
 filetype plugin on
 
-" set spellings
+" Options
+set re=1
+set tw=90
+set t_Co=256
+set path+=**
+set cmdheight=1
+set pumheight=10
+set scrolljump=5
+set history=1000
+set textwidth=80
+set sidescroll=1
+set laststatus=2
+set iskeyword+=-
+set showtabline=2
+set synmaxcol=1000
+set signcolumn=yes
+set conceallevel=0
+set encoding=utf-8
+set sidescrolloff=8
+set background=dark
+set foldmethod=syntax
+set foldlevelstart=90
+set fileencoding=utf-8
+set clipboard+=unnamedplus
+set mousemodel=popup_setpos
+set breakindentopt=sbr,shift:4
+set backspace=indent,eol,start
+
+" Leader key
+let mapleader = " "
+
+" Spellings
 set spell
 set spelllang=en_us
 
-" set appearance
-set ruler
-set showmode
-set cursorline
-set background=dark
+" Syntax
+syntax on
+filetype plugin on
 
-" set cursor
-set guicursor=
+" Cursor
 set mouse=a
+set mouse=nicr
+set guicursor=
+set cursorline
 
-" set scrolling
-set scrolloff=7
-set sidescrolloff=10
+" Searching
+set nohlsearch
+set ignorecase
+set incsearch
+set smartcase
 
-" set number
+" Bells
+set noerrorbells
+set visualbell
+set belloff=esc
+
+" Line-numbers
 set number
 set relativenumber
 
-" set signcolumn
-set signcolumn=yes
-
-" set searching
-set ignorecase
-set smartcase
-set incsearch
-set nohlsearch
-
-" set indentation
+" Tab & Spacing
+set smarttab
+set expandtab
 set autoindent
-set noexpandtab
+set smartindent
+set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set tabstop=4
-set copyindent
 
-" set error bells
-set noerrorbells
-set visualbell
-
-" undofiles & undodir
-set noswapfile
-set nobackup
-set undodir=~/.vim/undodir
+" Backup
 set undofile
-
-" set status line
-set title
-set laststatus=2
-set showtabline=2
-set cmdheight=1
-
-" set clipboard
-set clipboard=unnamed
-
-" set wrap
-set wrap
-set breakindent
-
-" support 256 color
-set t_Co=256
-
-" set history
-set history=1000
-set showcmd
+set nobackup
+set noswapfile
+set nowritebackup
+set undodir=~/.vim/undodir
