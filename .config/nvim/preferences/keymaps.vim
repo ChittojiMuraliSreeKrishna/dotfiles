@@ -1,3 +1,7 @@
+"---Keymaps Settings---
+" Leader Key
+let mapleader = " "
+
 " Movements
 nnoremap <silent><leader><Up> :wincmd k<CR>
 nnoremap <silent><leader><Down> :wincmd j<CR>
@@ -27,13 +31,4 @@ nnoremap <silent><leader>; g_a;<Esc>
 
 " Open Terminal
 nnoremap <silent><C-n> :call OpenTerminal()<CR>
-
-
-
-
-
-
-
-
-
 

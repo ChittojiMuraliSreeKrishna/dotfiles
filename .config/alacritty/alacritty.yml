@@ -72,10 +72,10 @@ colors:
     text: '#bbc2cf'
 
   primary:
-    hard contrast: background = '0x1d2021'
-    background: "0x282828"
+    hard contrast: background = '0x282828'
+    background: "0x1d2021"
     soft contrast: background = '0x32302f'
-    foreground: "0xebdbb2"
+    foreground: "0xfbf1c7"
 
   # Normal colors
   normal:
@@ -104,7 +104,7 @@ colors:
 visual_bell:
   animation: EaseOutExpo
   duration: 1
-  color: '#ffffff'
+  color: '#fbf1c7'
 
 # Background opacity
 background_opacity: 0.9

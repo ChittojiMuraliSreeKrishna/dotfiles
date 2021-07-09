@@ -1,4 +1,5 @@
-call plug#begin('~/.config/nvim/plugged')
+" https://vimawesome.com/
+call plug#begin('$HOME/.config/nvim/plugged')
 Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'gregsexton/matchtag'
@@ -11,7 +12,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-" Auto Complete
+" Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
 

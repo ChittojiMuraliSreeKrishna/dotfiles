@@ -1,6 +1,5 @@
 #!/bin/sh
 nitrogen --restore &
-picom -c ~/.config/picom.conf &
+picom --config ~/.config/picom/picom.conf &
 nm-applet &
-volumeicon &
 mate-power-manager &

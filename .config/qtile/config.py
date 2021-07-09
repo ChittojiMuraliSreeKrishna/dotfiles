@@ -129,8 +129,8 @@ for i, (name, kwargs) in enumerate(group_names, 1):
     keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name)))
 
 layout_theme = {"border_width": 1,
-                "margin": 3,
-                "border_focus": "00ff00",
+                "margin": 1,
+                "border_focus": "98971a",
                 "border_normal": "1D2330"}
 
 layouts = [
@@ -139,20 +139,22 @@ layouts = [
         layout.Max(**layout_theme),
         ]
 
-colors = [["#282c34", "#282c34"], # panel background
-          ["#3d3f4b", "#434758"], # background for current screen tab
-          ["#ffffff", "#ffffff"], # font color for group names
-          ["#ff5555", "#ff5555"], # border line color for current tab
-          ["#008a00", "#008a00"], # border line color for 'other tabs' and color for 'odd widgets'
-          ["#4f76c7", "#4f76c7"], # color for the 'even widgets'
-          ["#ecbb00", "#ecbb00"]] # backbround for inactive screens
-
+# Gruvbox-colors
+colors = [
+            ["#1d2021", "#1d2021"], # colors[0] darkest
+            ["#282828", "#282828"], # colors[1] dark
+            ["#ebdbb2", "#ebdbb2"], # colors[2] light
+            ["#cc241d", "#cc241d"], # colors[3] red
+            ["#98971a", "#98971a"], # colors[4] green
+            ["#458588", "#458588"], # colors[5] blue
+            ["#d65d0e", "#d65d0e"]  # colors[6] orange
+        ]
 
 widget_defaults = dict(
         font= "Sans Mono",
         fontsize= 12,
         padding= 2,
-        background= colors[2]
+        background= colors[0]
         )
 extension_defaults = widget_defaults.copy()
 
@@ -160,63 +162,74 @@ screens = [
         Screen(
             top=bar.Bar(
                 [
+                    widget.Systray(
+                            icon_sixe = 20,
+                            background = colors[1],
+                            padding = 5
+                            ),
                     widget.Sep(
                         linewidth = 0,
-                        padding = 6,
-                        foreground = colors[2],
-                        background = colors[5]
+                        fontsize = 15,
+                        padding = 5,
+                        background = colors[1],
+                        foreground = colors[2]
                         ),
                     widget.TextBox(
-                        text = ' ',
-                        background = colors[5],
-                        foreground = colors[6],
-                        fontsize=20
+                        text = '',
+                        padding = 3,
+                        background = colors[1],
+                        foreground = colors[2],
+                        fontsize = 15
                         ),
                     widget.Clock(
-                        format="%A, %B %d - %H:%M ",
+                        format="%H:%M|%d-%B",
                         foreground = colors[2],
-                        background=colors[5],
-                        fontsize = 15),
+                        background=colors[1],
+                        fontsize = 15,
+                        padding = 5
+                        ),
                     widget.Battery(
                         charge_char="",
                         discharge_char="",
                         empty_char = "",
                         full_char = "Full",
                         format = "{char} {percent:2.0%} {hour:d}:{min:02d}",
-                        foreground=colors[2],
+                        foreground=colors[1],
                         background=colors[4],
                         low_foreground=colors[0],
                         padding = 5,
                         fontsize = 15
                         ),
                     widget.TextBox(
+                        text = '',
+                        padding = 3,
+                        background = colors[5],
+                        foreground = colors[1],
+                        fontsize = 15,
+                        ),
+                    widget.Volume(
+                            background = colors[5],
+                            fontsize = 15,
+                            padding = 3,
+                            foreground = colors[1]
+                            ),
+                    widget.TextBox(
                         text = '',
                         padding = 3,
                         fontsize = 18,
                         foreground = colors[0],
-                        background=colors[6]
+                        background=colors[2]
                         ),
                     widget.Backlight(
-                        background = colors[6],
-                        foreground = colors[0],
-                        fontsize = 15,
-                        backlight_name = 'intel_backlight'
-                        ),
-                    widget.TextBox(
-                        text = '',
                         background = colors[2],
                         foreground = colors[0],
                         fontsize = 15,
-                        padding = 3
+                        padding = 3,
+                        backlight_name = 'intel_backlight'
                         ),
-                    widget.Volume(
-                            background = colors[2],
-                            fontsize = 15,
-                            foreground = colors[0]
-                            ),
                     widget.Sep(
                             linewidth = 2,
-                            padding = 6,
+                            padding = 5,
                             foreground = colors[2],
                             background = colors[0]
                             ),
@@ -229,9 +242,9 @@ screens = [
                             ),
                     widget.Moc(
                         background = colors[0],
-                        foreground = colors[2],
+                        foreground = colors[3],
                         noplay_color = colors[1],
-                        play_color=colors[3],
+                        play_color=colors[2],
                         update_interval = 0.1
                         ),
                     widget.Spacer(
@@ -239,26 +252,10 @@ screens = [
                         background = colors[0],
                         padding = 0
                         ),
-                    widget.CurrentLayout(
-                            background = colors[0],
-                            foreground = colors[2],
-                            fontshadow = colors[4],
-                            fontsize = 14
-                            ),
-                    widget.Sep(
-                        linewidth = 2,
-                        padding = 6,
-                        foreground = colors[2],
-                        background = colors[0]
-                        ),
                     widget.GroupBox(
                         fontsize = 16,
-                        margin_y = 0,
-                        margin_x = 0,
-                        padding = 6,
-                        borderwidth = 1,
+                        borderwidth = 2,
                         active = colors[2],
-                        inactive = colors[2],
                         rounded = True,
                         highlight_method = "block",
                         this_current_screen_border = colors[4],
@@ -271,13 +268,23 @@ screens = [
                         hide_unused= True
                         ),
                     widget.Sep(
+                        linewidth = 2,
+                        padding = 3,
+                        foreground = colors[2],
+                        background = colors[0]
+                        ),
+                    widget.CurrentLayout(
+                            background = colors[0],
+                            foreground = colors[6],
+                            ),
+                    widget.Sep(
                         linewidth = 0,
-                        padding = 6,
+                        padding = 3,
                         foreground = colors[2],
                         background = colors[0]
                         ),
                     ],
-                24,
+                22,
                 ),
             ),
         ]
