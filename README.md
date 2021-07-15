@@ -76,4 +76,4 @@ XF86AudioPrev
 ```
 
 # to enable tap to touch
->/usr/share/X11/xorg.conf.d/90-libinput.conf
+>/usr/share/X11/xorg.conf.d/90-touchpad.conf
