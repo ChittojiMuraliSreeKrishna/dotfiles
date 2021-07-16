@@ -30,3 +30,16 @@ fish_config
 sudo pacman -S i3
 ```
 ## Config for i3 will be present in ~/.config/i3/config or ~/.i3/config
+
+# qtile
+```bash
+sudo pacman -S qtile
+```
+# neovim
+```bash
+sudo pacman -S neovim
+```
+## to change the nvim to vim command
+```bash
+ln -s (which nvim) /usr/locale/bin/vim
+```
