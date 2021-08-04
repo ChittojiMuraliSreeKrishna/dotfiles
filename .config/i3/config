@@ -17,7 +17,7 @@ set $alt Mod1
 
 # applications
 set $terminal --no-startup-id alacritty
-set $browser --no-startup-id google-chrome-stable
+set $browser --no-startup-id google-chrome-beta
 set $fileManager --no-startup-id thunar
 set $video --no-startup-id vlc
 set $textEditor --no-startup-id code
@@ -46,7 +46,7 @@ focus_follows_mouse yes
 for_window [urgent=latest] focus
 
 # scripts
-exec ~/.i3/Scripts/autostart.sh
+exec ~/.config/i3/Scripts/autostart.sh
 #exec xrdb ~/.Xresources
 exec --no-startup-id xss-lock --transfer-sleep-lock --i3lock --nofork
 
@@ -168,7 +168,6 @@ bindsym $win+shift+c exec $textEditor
 bindsym $win+shift+v exec $video
 bindsym $win+shift+o exec $office
 
-exec --no-startup-id dbus-launch nm-applet
 ##############################
 ### window/workspace rules ###
 ##############################
@@ -197,12 +196,12 @@ assign [class="libreoffice-startcenter"] $ws7
 bindsym $win+m bar mode toggle
 bar {
         position top
-        font pango:Dejavu Sans Mono 12
+        font pango:Dejavu Sans Mono 9
         status_command i3blocks -c $HOME/.config/i3/bar/topbar.conf
         mode dock
         workspace_buttons yes
         separator_symbol "|"
-        workspace_min_width 40
+        workspace_min_width 30
         strip_workspace_numbers yes
         binding_mode_indicator yes
         tray_output none

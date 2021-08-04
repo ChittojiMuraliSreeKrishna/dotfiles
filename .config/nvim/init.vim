@@ -1,5 +1,5 @@
-source $HOME/.config/nvim/preferences/plugins.vim
-source $HOME/.config/nvim/preferences/settings.vim
-source $HOME/.config/nvim/preferences/keymaps.vim
-source $HOME/.config/nvim/preferences/functions.vim
-source $HOME/.config/nvim/preferences/configurations.vim
+source $HOME/.config/nvim/Preferences/Plugins.vim
+source $HOME/.config/nvim/Preferences/Keymaps.vim
+source $HOME/.config/nvim/Preferences/Settings.vim
+source $HOME/.config/nvim/Preferences/Functions.vim
+source $HOME/.config/nvim/Preferences/Configurations.vim

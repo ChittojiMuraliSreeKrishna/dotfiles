@@ -4,5 +4,5 @@ nitrogen --restore &
 nm-applet &
 mate-power-manager &
 volumeicon &
-picom --config ~/.config/picom.conf &
+picom --config ~/.config/picom/picom.conf &
 dunst &
