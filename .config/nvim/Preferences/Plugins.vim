@@ -10,7 +10,8 @@ call plug#begin('$HOME/.config/nvim/plugged')
 "##########################################
 " Themes
 Plug 'gruvbox-community/gruvbox'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Nerd-Tree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -31,7 +32,6 @@ Plug 'prettier/prettier'
 "##########################################
 "#              LANGUAGE PLUGS            #
 "##########################################
-
 " HTML
 Plug 'gregsexton/MatchTag'
 Plug 'alvan/vim-closetag'
@@ -48,10 +48,14 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'justinj/vim-react-snippets'
 Plug 'mxw/vim-jsx'
 
+" Python
+Plug 'vim-python/python-syntax'
+Plug 'hdima/python-syntax'
+
 "##########################################
 "#              AUTO COMPLETE             #
 "##########################################
-
+" coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = ['coc-emmet', 
                               \'coc-css', 

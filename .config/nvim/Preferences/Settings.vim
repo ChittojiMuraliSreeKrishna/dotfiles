@@ -25,7 +25,7 @@ set spelllang=en_us
 " Line-Numbers
 set number
 set relativenumber
-set noruler
+set ruler
 
 " Searching
 set nohlsearch
@@ -75,7 +75,7 @@ set splitright splitbelow
 
 " List
 set list
-set list listchars=tab:\|\
+set listchars=tab:\|\
 
 " Backspace
 set backspace=indent,eol,start
@@ -107,4 +107,8 @@ set sidescroll=1
 set foldmethod=syntax
 set nostartofline
 set colorcolumn=+1
+set nolangremap
+
+" Coc
+set updatetime=300
 set shortmess+=c

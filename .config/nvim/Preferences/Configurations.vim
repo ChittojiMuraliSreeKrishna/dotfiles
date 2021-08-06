@@ -1,12 +1,16 @@
 " ColorScheme
 set background=light
 colorscheme gruvbox
-highlight ColorColumn guibg=dark ctermbg=lightGrey
+let g:gruvbox_italic = 1
+let g:gruvbox_undercurl = 0
+highlight ColorColumn guibg=#458588 ctermbg=0
 
-" Lightline
-let g:lightline#bufferline#clickable=1
-let g:lightline#bufferline#shorten_path=1
-let g:lightline#bufferline#min_buffer_count=1
+" Airline
+set noshowmode
+set nomodeline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'gruvbox'
+let g:airline#extensions#tabline#enabled = 1
 
 " Syntax folding in javaScript
 let javascript_fold=1
@@ -25,5 +29,3 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit'
   \}
-
-

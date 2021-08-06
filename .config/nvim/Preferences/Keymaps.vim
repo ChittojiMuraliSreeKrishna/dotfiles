@@ -26,7 +26,7 @@ nnoremap <silent><leader>q :xa<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
 
 " Files Search
-nnoremap <C-p> :Files<CR>
+nnoremap <C-f> :Files<CR>
 
 " Add-Semicolumn
 nnoremap <silent><leader>; g_a;<Esc>

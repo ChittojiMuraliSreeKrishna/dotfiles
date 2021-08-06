@@ -1,6 +1,6 @@
-#######################
-### globalVariables ###
-#######################
+######################################################
+#                   GLOBAL VARIABLES                 #
+######################################################
 # modKeys
 set $win Mod4
 set $alt Mod1
@@ -14,6 +14,7 @@ set $alt Mod1
  set $ws6 6:
  set $ws7 7:
  set $ws8 8:
+ set $ws9 9: tools
 
 # applications
 set $terminal --no-startup-id alacritty
@@ -32,9 +33,9 @@ set $blue #458588
 set $yellow #d79921
 set $aqua #689d6a
 
-######################
-### General Config ###
-######################
+##################################################
+#                   PREFERENCES                  #
+##################################################
 # appearance
 font:pongo:Sans Mono 11
 default_border pixel 1
@@ -50,9 +51,9 @@ exec ~/.config/i3/Scripts/autostart.sh
 #exec xrdb ~/.Xresources
 exec --no-startup-id xss-lock --transfer-sleep-lock --i3lock --nofork
 
-####################
-### General Keys ###
-####################
+#####################################################
+#                   KEY BINDINGS                    #
+#####################################################
 # i3Keys
 bindsym $alt+Escape exec i3-msg exit
 bindsym $win+l exec i3lock
@@ -63,6 +64,8 @@ bindsym $alt+F4 kill
 # general usage
 bindsym $win+d exec rofi -show drun
 bindsym $win+Tab exec rofi -show window
+bindsym $alt+Tab workspace next
+bindsym $alt+Shift+Tab workspace prev
 bindsym $win+Return exec $terminal
 bindsym $win+KP_Enter exec $terminal
 bindsym $win+Ctrl+d --release exec "killall dunst; exec notify-send 'restart dunst'"
@@ -133,6 +136,7 @@ bindsym $win+5 workspace $ws5
 bindsym $win+6 workspace $ws6
 bindsym $win+7 workspace $ws7
 bindsym $win+8 workspace $ws8
+bindsym $win+9 workspace $ws9
 
 # move to workspace
 bindsym $win+Shift+1 move container to workspace $ws1;exec notify-send 'Moved Container To' '$WS1'
@@ -154,7 +158,7 @@ bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'"
 bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'"
 
 # music {moc}
-bindsym $win+XF86AudioPlay exec mocp -p;exec notify-send 'Music Player' 'Started'
+bindsym $win+XF86AudioPlay exec $terminal -e  mocp;exec notify-send 'Music Player' 'Opened'
 bindsym XF86AudioPlay exec mocp -G;exec notify-send 'Music Player' 'Started'
 bindsym XF86AudioNext exec mocp -f;exec notify-send 'Music Player' 'Next'
 bindsym XF86AudioPrev exec mocp -r;exec notify-send 'Music Player' 'Previous'
@@ -168,18 +172,22 @@ bindsym $win+shift+c exec $textEditor
 bindsym $win+shift+v exec $video
 bindsym $win+shift+o exec $office
 
-##############################
-### window/workspace rules ###
-##############################
+#############################################################
+#                   WINDOW/WORKSPACE RULES                  #
+#############################################################
 # Open applications in specific workspace
 assign [class="Thunar"] $ws2
 assign [class="Google-chrome"] $ws3
 assign [class="vlc"] $ws5
 assign [class="libreoffice-startcenter"] $ws7
+assign [class="Lxappearance"] $ws9
+assign [class="Nitrogen"] $ws9
+assign [class="Nm-connection-editor"] $ws9
+assign [class="Grub-customizer"] $ws9
 
-##############
-### colors ###
-##############
+#############################################
+#                   COLORS                  #
+#############################################
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
   client.focused          $light $light $blue $blue
@@ -189,9 +197,9 @@ assign [class="libreoffice-startcenter"] $ws7
   client.placeholder      $dark $light $aqua $aqua
   client.background       $dark
 
-###########
-### Bar ###
-###########
+#####################################################
+#                   BAR SETTINGS                    #
+#####################################################
 # bar appearance
 bindsym $win+m bar mode toggle
 bar {
@@ -220,6 +228,7 @@ bar {
 bar {
 	position bottom
 	tray_output primary
+    tray_padding 0
     mode dock
     separator_symbol "|"
 	status_command i3blocks -c $HOME/.config/i3/bar/bottombar.conf
@@ -229,9 +238,10 @@ bar {
 		background $dark
 	}
 }
-######################
-### Resize Windows ###
-######################
+#####################################################
+#                   OTHER OPTIONS                   #
+#####################################################
+# Resize windows
 bindsym $alt+r mode "resize";exec notify-send 'Resize Mode' 'Active'
 mode "resize"{
     bindsym $alt+KP_Subtract resize shrink width 5 px or 5 ppt
@@ -241,10 +251,7 @@ mode "resize"{
     bindsym Escape mode "default";exec notify-send 'Resize Mode' 'Disabled'
 }
 
-############################
-### Settings for i3-gaps ###
-############################
-# general gaps config
+# Gaps config
 smart_gaps on
 smart_borders on
 gaps inner 7
@@ -286,3 +293,6 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
+#############################################
+#                   THE END                 #
+############################################# -C.Murali Sree Krihna

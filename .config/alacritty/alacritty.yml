@@ -65,15 +65,15 @@ draw_bold_text_with_bright_colors: true
 # Colors (Gruvbox dark)
 colors:
   cursor:
-  #  text: '#000000'
-    cursor: '#ff0000'
+    text: '#282828'
+    cursor: '#cc241d'
 
   selection:
     text: '#bbc2cf'
 
   primary:
     hard contrast: background = '0x282828'
-    background: "0x1d2021"
+    background: "0x282828"
     soft contrast: background = '0x32302f'
     foreground: "0xfbf1c7"
 
