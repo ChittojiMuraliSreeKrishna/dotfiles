@@ -13,7 +13,7 @@ if [ "$status" == "Full" ]; then
   full_text=' '
   short_text=' '
 else
-  if [ "$status" == "Discharging" ] || [ "$status" == "Charging" ]; then
+  if [ "$status" == "Discharging" ]; then
     if [ "$percent" -gt "90" ]; then
       label=' '
     elif [ "$percent" -gt "60" ]; then
@@ -30,8 +30,8 @@ else
     full_text="$label $percent%"' ('"$time"')'
     short_text='- '"$percent"'%'
   elif [ "$status" == "Charging" ]; then
-    full_text="$label $percent%"' ('"$time"')'
-    short_text=' '"$percent"'%'
+    full_text=' '" $percent%"' ('"$time"')'
+    short_text=' '" $percent"'%'
   else
     full_text='Error parsing battery from acpi'
     short_text=''

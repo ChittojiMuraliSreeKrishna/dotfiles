@@ -158,7 +158,7 @@ bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'"
 bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'"
 
 # music {moc}
-bindsym $win+XF86AudioPlay exec $terminal -e  mocp;exec notify-send 'Music Player' 'Opened'
+bindsym $win+XF86AudioPlay exec mocp -p;exec notify-send 'Music Player' 'Opened'
 bindsym XF86AudioPlay exec mocp -G;exec notify-send 'Music Player' 'Started'
 bindsym XF86AudioNext exec mocp -f;exec notify-send 'Music Player' 'Next'
 bindsym XF86AudioPrev exec mocp -r;exec notify-send 'Music Player' 'Previous'
