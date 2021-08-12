@@ -6,4 +6,3 @@ mate-power-manager &
 volumeicon &
 picom --config ~/.config/picom/picom.conf &
 dunst &
-mocp --server &

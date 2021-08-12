@@ -3,10 +3,10 @@
 let mapleader = " "
 
 " Movements
-nnoremap <silent><leader>k :wincmd k<CR>
-nnoremap <silent><leader>j :wincmd j<CR>
-nnoremap <silent><leader>h :wincmd h<CR>
-nnoremap <silent><leader>l :wincmd l<CR>
+nnoremap <silent><leader><Up> :wincmd k<CR>
+nnoremap <silent><leader><Down> :wincmd j<CR>
+nnoremap <silent><leader><Left> :wincmd h<CR>
+nnoremap <silent><leader><Right> :wincmd l<CR>
 
 " Tab-Movement
 nnoremap <silent><TAB> :tabn<CR>

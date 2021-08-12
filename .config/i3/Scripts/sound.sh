@@ -1,7 +1,4 @@
 #!/bin/sh
-#
-# volume (display main volume, mute on right click and change on scroll)
-#
 
 case $BLOCK_BUTTON in
   1) pactl set-sink-mute @DEFAULT_SINK@ toggle ;; # right click : toggle mute
@@ -16,19 +13,19 @@ ismuted=$(echo "$sinks" | grep "Mute: " | tail -1 | awk '{print $2}')
 volume=$(echo "$sinks" | grep "Volume: " | tail -2 | head -1 | awk '{print $5}' | tr -d '%')
 
 if [ -n "$isbluetooth" ]; then
-  color="#1E88E5"
+  color="#076678"
   if [ "$ismuted" = "yes" ]; then
-    color="#990000"
+    color="#CC241D"
   fi
 elif [ -n "$isheadphone" ]; then
-  color="#00A900"
+  color="#79740E"
   if [ "$ismuted" = "yes" ]; then
-      color="#A90000"
+      color="#9D0006"
   fi
 elif [ "$ismuted" = "yes" ]; then
-  color="#A0A0A0"
+  color="#A89984"
 else
-  color="#000000"
+  color="#282828"
 fi
 
 printf "<span color='%s'>" "$color"
@@ -51,3 +48,4 @@ if [ "$ismuted" = "yes" ]; then
 fi
 
 echo "</span>"
+

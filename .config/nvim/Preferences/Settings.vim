@@ -94,20 +94,25 @@ set formatoptions+=r
 set laststatus=2
 set showtabline=2
 
+" Fold Methods
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
 " Other-Options
-set title
-set magic
-set showcmd
-set wildmenu
-set scrolloff=8
+set signcolumn=yes
+set colorcolumn=+1
+set nostartofline
 set scrolljump=5
 set textwidth=80
-set signcolumn=yes
 set sidescroll=1
-set foldmethod=syntax
-set nostartofline
-set colorcolumn=+1
+set scrolloff=8
 set nolangremap
+set wildmenu
+set showcmd
+set title
+set magic
 
 " Coc
 set updatetime=300

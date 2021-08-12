@@ -149,9 +149,9 @@ bindsym $win+Shift+7 move container to workspace $ws7;exec notify-send 'Moved Co
 bindsym $win+Shift+8 move container to workspace $ws8;exec notify-send 'Moved Container To' '$ws8'
 
 # music keys {alsa-utils}
-bindsym XF86AudioRaiseVolume exec "amixer sset Master 2%+; notify-send 'Volume Up'"
-bindsym XF86AudioLowerVolume exec "amixer sset Master 2%-; notify-send 'Volume Down'"
-bindsym XF86AudioMute exec amixer sset Master toggle
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +2%; notify-send 'Volume Up'"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -2%; notify-send 'Volume Down'"
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
 # brightness {xorg-xbacklight}
 bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'"
