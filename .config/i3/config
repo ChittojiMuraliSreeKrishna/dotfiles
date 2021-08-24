@@ -18,7 +18,7 @@ set $alt Mod1
 
 # applications
 set $terminal --no-startup-id alacritty
-set $browser --no-startup-id google-chrome-beta
+set $browser --no-startup-id google-chrome-stable
 set $fileManager --no-startup-id thunar
 set $video --no-startup-id vlc
 set $textEditor --no-startup-id code
@@ -55,7 +55,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock --i3lock --nofork
 #                   KEY BINDINGS                    #
 #####################################################
 # i3Keys
-bindsym $alt+Escape exec i3-msg exit
+bindsym $alt+Escape exec ~/.config/i3/Scripts/powermenu.sh
 bindsym $win+l exec i3lock
 bindsym $win+Shift+r restart
 bindsym $win+Ctrl+c reload
@@ -252,10 +252,10 @@ mode "resize"{
 }
 
 # Gaps config
-smart_gaps on
-smart_borders on
-gaps inner 7
-gaps outer 0
+#smart_gaps on
+#smart_borders on
+#gaps inner 7
+#gaps outer 0
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
