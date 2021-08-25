@@ -15,26 +15,43 @@
   #------------------------------------------------------------------------#
   # 				Boot-Loader
   #------------------------------------------------------------------------#
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+    grub = {
+      device = "/dev/sda";
+      useOSProber = true;
+    };
+  };
   
   #------------------------------------------------------------------------#
   #				Networking
   #------------------------------------------------------------------------#
-  # HostName
-  networking.hostName = "nixos";
-  
-  # Wireless Devices
-  networking.wireless.enable = true;
-  networking.wireless.userControlled.enable = true;
-  networking.wireless.interfaces = ["wlp1s0"];
-  
-  # Networking devices Using DHCP
-  networking.useDHCP = false;
-  networking.interfaces.enp2s0.useDHCP = true;
-  networking.interfaces.wlp1s0.useDHCP = true;
+  # Networking
+  networking = {
+    # HostName
+    hostName = "nixos";
+    # Interfaces
+    useDHCP = false;
+    interfaces = {
+      enp2s0.useDHCP = true;
+      wlp1s0.useDHCP = true;
+    };
+    
+    # Wireless
+    wireless = {
+      enable = true;
+      userControlled = {
+        enable = true;
+      };
+      interfaces = ["wlp1s0"];
+      networks = {
+        deivename = {
+          psk = "password";
+        };
+      };
+    };
+  };
 
   # Proxy
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -55,7 +72,6 @@
     keyMap = "us";
   };
 
-
   #------------------------------------------------------------------------#
   #				DisplayManager
   #------------------------------------------------------------------------#
@@ -74,11 +90,22 @@
     # WindowManager
     windowManager.i3 = {
       enable = true;
+      package = pkgs.i3-gaps;
       extraPackages = with pkgs; [
         i3blocks
-	i3-gaps
       ];
     };
+  };
+
+  #------------------------------------------------------------------------#
+  #				Picom
+  #------------------------------------------------------------------------#
+  # Picom
+  services.picom = {
+    enable = true;
+    fade = true;
+    shadow = true;
+    fadeDelta = 4;
   };
   
   #------------------------------------------------------------------------#
@@ -90,6 +117,19 @@
     enable = true;
     support32Bit = true;
   };
+  
+  #------------------------------------------------------------------------#
+  #				Mobile Connectivity
+  #------------------------------------------------------------------------#
+  services.gvfs = {
+    enable = true;
+  };
+
+  programs.adb.enable = true;
+
+  services.udev.packages = [
+    pkgs.android-udev-rules
+  ];
 
   #------------------------------------------------------------------------#
   #				Users
@@ -116,7 +156,6 @@
     rofi
     # Appearance
     nitrogen
-    picom
     lxappearance
     # Language
     nodejs
@@ -131,6 +170,11 @@
     # i3Bar config
     acpi
     light
+    # zip/unzip
+    zip
+    unzip
+    # Mobile Connect
+    jmtpfs
   ];
 
   #------------------------------------------------------------------------#
