@@ -27,7 +27,7 @@ restartI3(){
     i3-msg -q restart
 }
 
-choosen=$(printf "$restartVar\n$lockVar\n$exitVar\n$poweroffVar\n$sleepVar\n$rebootVar" |
+choosen=$(printf "$restartVar\n$lockVar\n$exitVar\n$poweroffVar\n$rebootVar\n$sleepVar" |
     rofi -dmenu -p "PowerMenu" -theme onedark)
 
 case $choosen in

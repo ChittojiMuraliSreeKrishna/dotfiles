@@ -1,6 +1,7 @@
-" --Keymaps --
-"  leader-Key
 let mapleader = " "
+
+" Prev Buffer
+nnoremap <leader>b :b#<CR>
 
 " Movements
 nnoremap <silent><leader><Up> :wincmd k<CR>
@@ -22,15 +23,10 @@ nnoremap <silent><C-t> :tabnew<CR>
 " Quit-All
 nnoremap <silent><leader>q :xa<CR>
 
-" Nerd-Tree
-nnoremap <C-b> :NERDTreeToggle<CR>
-
 " Files Search
 nnoremap <C-f> :Files<CR>
 
 " Add-Semicolumn
 nnoremap <silent><leader>; g_a;<Esc>
 
-" Open-Terminal
-nnoremap <silent><C-n> :call OpenTerminal()<CR>
 

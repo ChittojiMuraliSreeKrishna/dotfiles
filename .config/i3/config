@@ -252,10 +252,10 @@ mode "resize"{
 }
 
 # Gaps config
-#smart_gaps on
-#smart_borders on
-#gaps inner 7
-#gaps outer 0
+smart_gaps on
+smart_borders on
+gaps inner 7
+gaps outer 0
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)

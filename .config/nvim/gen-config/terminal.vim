@@ -1,12 +1,3 @@
-" Chars
-set fillchars+=vert:\
-
-" Whitesoaces
-if &encoding == 'utf-8'
-    set list listchars=trail:»,tab:»-
-endif
-
-" Open-Terminal
 set splitright
 set splitbelow
 " turn terminal to normal mode
@@ -18,3 +9,7 @@ function! OpenTerminal()
     split term://bash
     resize 10
 endfunction
+
+" Open-Terminal
+nnoremap <silent><C-t> :call OpenTerminal()<CR>
+
