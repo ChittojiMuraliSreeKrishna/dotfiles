@@ -1,15 +1,17 @@
 set splitright
 set splitbelow
+
 " turn terminal to normal mode
 tnoremap <Esc> <C-\><C-n>
-" start terminal in insert mode
+
+" Start terminal in insert mode
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-" open terminal on ctrl+n
+
+" Terminal Function
 function! OpenTerminal()
-    split term://bash
-    resize 10
+  split term://bash
+  resize 10
 endfunction
 
-" Open-Terminal
+" Open Terminal
 nnoremap <silent><C-t> :call OpenTerminal()<CR>
-

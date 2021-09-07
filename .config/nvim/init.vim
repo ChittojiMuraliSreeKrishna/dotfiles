@@ -1,11 +1,11 @@
-" Store vim plugs
-set runtimepath^=$HOME/.vim-plug
+" Storage For Vim Plugs
+set runtimepath^=$HOME/.vim
 
 " Leader Key
 let mapleader = " "
 
 " Plugs
-call plug#begin('$HOME/.vim-plug/plugged')
+call plug#begin('$HOME/.vim/plugged')
 
 runtime plugs.vim
 
@@ -17,7 +17,6 @@ runtime settings.vim
 " Keymaps
 runtime keymaps.vim
 
-" Plugin-Configs || General-Configs
+" Plug-Configs || General-Configs
 runtime! plug-config/*.vim
 runtime! gen-config/*.vim
-

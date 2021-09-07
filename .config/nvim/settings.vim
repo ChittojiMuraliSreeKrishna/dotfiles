@@ -1,6 +1,6 @@
-"----------------------------------------------------------------------"
-"                               Appearance
-"----------------------------------------------------------------------"
+" init autocmd
+autocmd!
+
 " Colouring
 set t_co=256
 set winbl=10
@@ -15,7 +15,7 @@ set guicursor=
 set cursorline
 set nocursorcolumn
 
-" Line-Numbers
+" Line Numbers
 set ruler
 set number
 set relativenumber
@@ -24,16 +24,16 @@ set relativenumber
 set showmatch
 set mat=2
 
-" Status-Line
+" Status Line
 set laststatus=2
 set showtabline=2
 
-" Sign-Column
-set signcolumn=yes
+" Sign Column
+set signcolumn=number
 
-"----------------------------------------------------------------------"
-"                               Preferences
-"----------------------------------------------------------------------"
+"--------------------------------------------------------------------
+"                         Preferences
+"--------------------------------------------------------------------
 autocmd!
 set title
 set magic
@@ -52,17 +52,15 @@ set spell
 set nolangremap
 set spelllang=en_us
 
-" Syntax
+" syntax
 syntax on
-filetype on
-filetype plugin on
 filetype plugin indent on
 
-" SwapFiles
+" Swapfiles
 set noswapfile
 set undofile
 set nobackup
-set undodir=$HOME/.vim-undodir
+set undodir=$HOME/.vim/undodir
 
 " Errors
 set visualbell
@@ -76,24 +74,25 @@ set hidden
 set autoread
 
 " Backspace
-set backspace=indent,eol,start
+set backspace=indent
+set backspace+=eol
+set backspace+=start
 
-" Tab-Settings
+" Tab-settings
 set smarttab
 set expandtab
 set autoindent
 set shiftround
 set smartindent
 
-" Tab-Spacing
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+" Tab Spacing
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 
 " Searching
 set gdefault
 set smartcase
-set showmatch
 set incsearch
 set nohlsearch
 set ignorecase
@@ -110,9 +109,9 @@ set nowrap
 set linebreak
 set wrapmargin=8
 set showbreak=...
-autocmd BufRead,BufNewFile *.md,*.txt setlocal wrap
+autocmd BufRead, BufNewFile *.md, *.txt setlocal wrap
 
-" Scroll-Off
+" Scroll Off
 set scrolloff=8
 set sidescroll=1
 set scrolljump=5
@@ -129,3 +128,7 @@ set formatoptions+=r
 " List
 set list
 set listchars=tab:\|\
+
+" Path || Ignore
+set path+=**
+set wildignore+=*/node_modules/*,*/.zip/*,*/.swp/*,*/tmp/*

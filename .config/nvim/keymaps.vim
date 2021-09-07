@@ -1,5 +1,3 @@
-let mapleader = " "
-
 " Prev Buffer
 nnoremap <leader>b :b#<CR>
 
@@ -10,8 +8,8 @@ nnoremap <silent><leader><Left> :wincmd h<CR>
 nnoremap <silent><leader><Right> :wincmd l<CR>
 
 " Tab-Movement
-nnoremap <silent><TAB> :tabn<CR>
-nnoremap <silent><S-TAB> :tabp<CR>
+nnoremap <silent><C-Right> :tabn<CR>
+nnoremap <silent><C-Left> :tabp<CR>
 
 " Resize-Tabs
 nnoremap <silent><leader>+ :vertical resize +5<CR>
@@ -23,10 +21,6 @@ nnoremap <silent><C-t> :tabnew<CR>
 " Quit-All
 nnoremap <silent><leader>q :xa<CR>
 
-" Files Search
-nnoremap <C-f> :Files<CR>
-
-" Add-Semicolumn
+" Add-Semicolumn, Comma at the end
 nnoremap <silent><leader>; g_a;<Esc>
-
-
+nnoremap <silent><leader>, g_a,<Esc>
