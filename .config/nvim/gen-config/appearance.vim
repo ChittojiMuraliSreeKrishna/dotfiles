@@ -1,17 +1,51 @@
 "--------------------------------------------------------------------
+"                           ColorScheme
+"--------------------------------------------------------------------
+" Color Column
+highlight ColorColumn cterm=NONE guibg=#3c3836
+
+" Cursor Line
+highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=#3c3836
+highlight CursorLine guibg=#3c3836
+
+" Line Numbers
+highlight LineNr cterm=NONE ctermfg=240 guifg=#a89984 guibg=#1d2021 gui=bold
+
+" Signcolumn
+highlight SignColumn guibg=#3c3836
+
+" White spaces
+highlight Whitespace cterm=NONE guifg=Gray30 guibg=NONE
+
+" Background
+highlight Normal ctermbg=NONE guibg=#1d2021 guifg=#ebdbb2
+highlight NonText ctermbg=NONE guibg=NONE
+
+" Syntax
+highlight Identifier guifg=#b16286
+highlight Statement guifg=#d65d0e
+highlight Comment guifg=#a89984
+highlight PreProc guifg=#458588
+highlight Type guifg=#ebdbb2
+highlight Constant guifg=#98971a
+highlight Special guifg=#689d6a
+highlight Underlined guifg=#98971a
+highlight Error guibg=#cc241d guifg=#282828
+
+"--------------------------------------------------------------------
 "                           StatusLine
 "--------------------------------------------------------------------
 " Colors
-highlight StatusOne guifg=#fbf1c7 guibg=Gray10
-highlight Modified guifg=#d79921 guibg=Gray10
-highlight StatusTwo guifg=#282828 guibg=#fbf1c7
+highlight StatusOne guifg=#a89984 guibg=#3c3836 gui=bold
+highlight Modified guifg=#d79921 guibg=#3c3836
+highlight StatusTwo guifg=#282828 guibg=#d5c4a1
 
 " Status Colors
-highlight DiffNormal guifg=#282828 guibg=#fbf1c7 gui=bold
+highlight DiffNormal guifg=#282828 guibg=#ebdbb2 gui=bold
 highlight DiffInsert guifg=#282828 guibg=#98971a gui=bold
 highlight DiffReplace guifg=#282828 guibg=#cc241d gui=bold
-highlight DiffVisual guifg=#fbf1c7 guibg=#458588 gui=bold
-highlight Buffer guibg=Gray guifg=#282828 gui=none
+highlight DiffVisual guifg=#ebdbb2 guibg=#458588 gui=bold
+highlight Buffer guifg=#ebdbb2 guibg=#7c6f64 gui=none
 
 " Bar
 set statusline=
@@ -26,15 +60,15 @@ set statusline+=%#StatusOne#
 set statusline+=%t\ %=
 set statusline+=\ %{&fileencoding}\ \|
 set statusline+=\ %Y\ 
-set statusline+=%#Buffer#%3p%%\  
+set statusline+=%#Buffer#%3p%%\ 
 set statusline+=%#StatusTwo#\ %l:%c\ 
 
 "--------------------------------------------------------------------
 "                           Tabline
 "--------------------------------------------------------------------
-highlight TabLine cterm=NONE gui=NONE guibg=#3c3836 guifg=#fbf1c7
-highlight TabLineSel gui=bold guibg=#fbf1c7 guifg=#282828
-highlight TabLineFill guibg=Gray10 cterm=NONE gui=NONE
+highlight TabLine cterm=NONE gui=NONE guibg=#7c6f64 guifg=#282828
+highlight TabLineSel gui=bold guibg=#d5c4a1 guifg=#282828
+highlight TabLineFill guibg=#3c3836 cterm=NONE gui=NONE
 
 set tabline=%!MyTabLine()
 function! MyTabLine()
@@ -61,23 +95,4 @@ function! MyTabLine()
   let s .= '%#TabLineFill#'
   return s
 endfunction
-
-"--------------------------------------------------------------------
-"                           Other Options
-"--------------------------------------------------------------------
-" Color Column
-highlight ColorColumn cterm=NONE guibg=Grey30
-
-" Cursor Line
-highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Green
-
-" Line Numbers
-highlight LineNr cterm=NONE ctermfg=240 guifg=#ffffff guibg=Grey30
-
-" White spaces
-highlight Whitespace cterm=NONE guifg=#458588 guibg=NONE
-
-" Comment
-highlight Comment guifg=#a89984
-
 

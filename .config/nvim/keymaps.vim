@@ -21,6 +21,12 @@ nnoremap <silent><C-t> :tabnew<CR>
 " Quit-All
 nnoremap <silent><leader>q :xa<CR>
 
+" Save File
+nnoremap <leader>w :w<CR>
+
 " Add-Semicolumn, Comma at the end
 nnoremap <silent><leader>; g_a;<Esc>
 nnoremap <silent><leader>, g_a,<Esc>
+
+" Open A File in browser
+nnoremap <silent><leader>o :!xdg-open %<CR>

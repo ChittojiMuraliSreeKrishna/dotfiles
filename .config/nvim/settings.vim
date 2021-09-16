@@ -29,7 +29,7 @@ set laststatus=2
 set showtabline=2
 
 " Sign Column
-set signcolumn=number
+set signcolumn=yes
 
 "--------------------------------------------------------------------
 "                         Preferences
@@ -53,7 +53,7 @@ set nolangremap
 set spelllang=en_us
 
 " syntax
-syntax on
+syntax enable
 filetype plugin indent on
 
 " Swapfiles
@@ -77,18 +77,6 @@ set autoread
 set backspace=indent
 set backspace+=eol
 set backspace+=start
-
-" Tab-settings
-set smarttab
-set expandtab
-set autoindent
-set shiftround
-set smartindent
-
-" Tab Spacing
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
 
 " Searching
 set gdefault
@@ -132,3 +120,4 @@ set listchars=tab:\|\
 " Path || Ignore
 set path+=**
 set wildignore+=*/node_modules/*,*/.zip/*,*/.swp/*,*/tmp/*
+

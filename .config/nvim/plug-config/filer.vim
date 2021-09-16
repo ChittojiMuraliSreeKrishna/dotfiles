@@ -13,3 +13,9 @@ nnoremap <silent><C-f> :Files<CR>
 nnoremap <silent><leader>r :Rg<CR>
 nnoremap <silent><leader>b :Buffer<CR>
 nnoremap <silent><leader>h :History<CR>
+
+let g:fzf_action = {
+      \ 'ctrl-t': 'tab-split',
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
