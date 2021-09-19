@@ -1,3 +1,4 @@
+# Environment
 env:
   TERM: xterm-256color
 
@@ -6,11 +7,11 @@ window:
     columns: 100
     lines: 85
   padding:
-    x: 6
-    y: 3
+    x: 0
+    y: 0
 
   dynamic_padding: true
-  decorations: full
+  decorations: none
   startup_mode: Windowed
 
 # Window title
@@ -72,8 +73,8 @@ colors:
     text: '#bbc2cf'
 
   primary:
-    hard contrast: background = '0x282828'
-    background: "0x282828"
+    hard contrast: background = '0x1d2021'
+    background: "0x1d2021"
     soft contrast: background = '0x32302f'
     foreground: "0xfbf1c7"
 
@@ -128,6 +129,9 @@ launcher:
       program: xdg-open
       args: []
 
+shell:
+  program: /bin/bash
+
 key_bindings:
     # (Windows, Linux, and BSD only)
   - { key: V,        mods: Control|Shift, action: Paste            }
@@ -147,3 +151,4 @@ key_bindings:
   - { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
   - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
   - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
+

@@ -1,9 +1,26 @@
-######################################################
-#                   GLOBAL VARIABLES                 #
-######################################################
-# modKeys
-set $win Mod4
+#--------------------------------------------------------------------#
+# Autostart Apps
+#--------------------------------------------------------------------#
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id conky
+exec --no-startup-id dunst
+exec --no-startup-id nm-applet
+exec --no-startup-id picom --config $HOME/.config/picom/picom.conf
+
+#--------------------------------------------------------------------#
+# Custom Variables
+#--------------------------------------------------------------------#
+# Modifiers
+set $super Mod4
 set $alt Mod1
+
+# Common Variables
+set $preferredTerminalEmulator /usr/bin/alacritty
+set $preferredBrowser /usr/bin/google-chrome-stable
+set $preferredFileManager /usr/bin/thunar
+set $preferredScreenShot /usr/bin/flameshot gui
+set $preferredVideoPlayer /usr/bin/vlc
+set $preferredTextEditor code
 
 # workspace names
  set $ws1 1:
@@ -16,14 +33,6 @@ set $alt Mod1
  set $ws8 8:
  set $ws9 9: tools
 
-# applications
-set $terminal --no-startup-id alacritty
-set $browser --no-startup-id google-chrome-stable
-set $fileManager --no-startup-id thunar
-set $video --no-startup-id vlc
-set $textEditor --no-startup-id code
-set $office --no-startup-id libreoffice
-
 # colors
 set $dark #282828
 set $light #fbf1c7
@@ -33,162 +42,15 @@ set $blue #458588
 set $yellow #d79921
 set $aqua #689d6a
 
-##################################################
-#                   PREFERENCES                  #
-##################################################
-# appearance
+#--------------------------------------------------------------------#
+# Appearnce
+#--------------------------------------------------------------------#
 font:pongo:Sans Mono 11
 default_border pixel 1
 default_floating_border pixel 1
 hide_edge_borders vertical
 
-# focus
-focus_follows_mouse yes
-for_window [urgent=latest] focus
-
-# scripts
-exec ~/.config/i3/Scripts/autostart.sh
-#exec xrdb ~/.Xresources
-exec --no-startup-id xss-lock --transfer-sleep-lock --i3lock --nofork
-
-#####################################################
-#                   KEY BINDINGS                    #
-#####################################################
-# i3Keys
-bindsym $alt+Escape exec ~/.config/i3/Scripts/powermenu.sh
-bindsym $win+l exec i3lock
-bindsym $win+Shift+r restart
-bindsym $win+Ctrl+c reload
-bindsym $alt+F4 kill
-
-# general usage
-bindsym $win+d exec rofi -show drun
-bindsym $win+Tab exec rofi -show window
-bindsym $alt+Tab workspace next
-bindsym $alt+Shift+Tab workspace prev
-bindsym $win+Return exec $terminal
-bindsym $win+KP_Enter exec $terminal
-bindsym $win+Ctrl+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym $win+p exec --no-startup-id flameshot full
-bindsym $win+Shift+p exec --no-startup-id flameshot gui
-
-# change borders
-bindsym $win+u border none;exec notify-send 'Border None'
-bindsym $win+y border pixel 1;exec notify-send 'Border Pixel 1'
-bindsym $win+n border normal;exec notify-send 'Border Normal'
-
-# change Focus
-bindsym $win+a focus parent
-bindsym $win+z focus child
-bindsym $win+Left focus left
-bindsym $win+Down focus down
-bindsym $win+Up focus up
-bindsym $win+Right focus right
-force_display_urgency_hint 500 ms
-
-# move Focused Window
-bindsym $win+Shift+Left move left
-bindsym $win+Shift+Down move down
-bindsym $win+Shift+Up move up
-bindsym $win+Shift+Right move right
-
-# workspace back and forth (with/without active container)
-workspace_auto_back_and_forth yes
-bindsym $win+b workspace back_and_forth
-bindsym $win+Shift+b move container to workspace back_and_forth; workspace back_and_forth
-
-# split Orientation
-bindsym $win+h split h;exec notify-send 'tile Horizontally'
-bindsym $win+v split v;exec notify-send 'tile Vertically'
-bindsym $win+q split toggle
-
-# toggle fullScreen
-bindsym $win+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $win+s layout stacking;exec notify-send 'Layout Changed' 'Stacking'
-bindsym $win+w layout tabbed;exec notify-send 'Layout Changed' 'Tabbed'
-bindsym $win+e layout toggle split;exec notify-send 'Layout Changed' 'Split'
-bindsym $win+Shift+space floating toggle;exec notify-send 'Layout Changed' 'Floating'
-
-# change focus between tiling / floating windows
-bindsym $win+space focus mode_toggle
-
-# toggle sticky
-bindsym $win+Shift+s sticky toggle
-
-#navigate workspaces next / previous
-bindsym $win+Ctrl+Right workspace next
-bindsym $win+Ctrl+Left workspace prev
-
-# move the currently focused window to the scratchpad
-bindsym $win+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad
-bindsym $win+minus scratchpad show
-
-# switch to workspace
-bindsym $win+1 workspace $ws1
-bindsym $win+2 workspace $ws2
-bindsym $win+3 workspace $ws3
-bindsym $win+4 workspace $ws4
-bindsym $win+5 workspace $ws5
-bindsym $win+6 workspace $ws6
-bindsym $win+7 workspace $ws7
-bindsym $win+8 workspace $ws8
-bindsym $win+9 workspace $ws9
-
-# move to workspace
-bindsym $win+Shift+1 move container to workspace $ws1;exec notify-send 'Moved Container To' '$WS1'
-bindsym $win+Shift+2 move container to workspace $ws2;exec notify-send 'Moved Container To' '$ws2'
-bindsym $win+Shift+3 move container to workspace $ws3;exec notify-send 'Moved Container To' '$ws3'
-bindsym $win+Shift+4 move container to workspace $ws4;exec notify-send 'Moved Container To' '$ws4'
-bindsym $win+Shift+5 move container to workspace $ws5;exec notify-send 'Moved Container To' '$ws5'
-bindsym $win+Shift+6 move container to workspace $ws6;exec notify-send 'Moved Container To' '$ws6'
-bindsym $win+Shift+7 move container to workspace $ws7;exec notify-send 'Moved Container To' '$ws7'
-bindsym $win+Shift+8 move container to workspace $ws8;exec notify-send 'Moved Container To' '$ws8'
-
-# music keys {alsa-utils}
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +2%; notify-send 'Volume Up'"
-bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -2%; notify-send 'Volume Down'"
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
-
-# brightness {xorg-xbacklight}
-bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'"
-
-# music {moc}
-bindsym $win+XF86AudioPlay exec mocp -p;exec notify-send 'Music Player' 'Opened'
-bindsym XF86AudioPlay exec mocp -G;exec notify-send 'Music Player' 'Started'
-bindsym XF86AudioNext exec mocp -f;exec notify-send 'Music Player' 'Next'
-bindsym XF86AudioPrev exec mocp -r;exec notify-send 'Music Player' 'Previous'
-bindsym $alt+XF86AudioPlay exec mocp -s;exec notify-send 'Music Player' 'Stop'
-
-# application keys
-bindsym $win+Ctrl+Return exec $fileManager
-bindsym $win+Ctrl+KP_Enter exec $fileManager
-bindsym $win+F2 exec $browser
-bindsym $win+shift+c exec $textEditor
-bindsym $win+shift+v exec $video
-bindsym $win+shift+o exec $office
-
-#############################################################
-#                   WINDOW/WORKSPACE RULES                  #
-#############################################################
-# Open applications in specific workspace
-assign [class="Thunar"] $ws2
-assign [class="Google-chrome"] $ws3
-assign [class="vlc"] $ws5
-assign [class="libreoffice-startcenter"] $ws7
-assign [class="Lxappearance"] $ws9
-assign [class="Nitrogen"] $ws9
-assign [class="Nm-connection-editor"] $ws9
-assign [class="Grub-customizer"] $ws9
-
-#############################################
-#                   COLORS                  #
-#############################################
-# Theme colors
+# Theme
 # class                   border  backgr. text    indic.   child_border
   client.focused          $light $light $blue $blue
   client.focused_inactive $dark $dark $green $green
@@ -197,25 +59,161 @@ assign [class="Grub-customizer"] $ws9
   client.placeholder      $dark $light $aqua $aqua
   client.background       $dark
 
-#####################################################
-#                   BAR SETTINGS                    #
-#####################################################
-# bar appearance
-bindsym $win+m bar mode toggle
+#--------------------------------------------------------------------#
+# wm Keybinds && App Keybinds
+#--------------------------------------------------------------------#
+# Powermenu
+bindsym $alt+Escape exec ~/.config/i3/Scripts/powermenu.sh
+
+# Kill focused Window
+bindsym $super+shift+c kill
+
+# reload the configuration file
+bindsym $super+r reload
+
+# restart i3 inplace
+bindsym $super+Shift+r restart
+
+# Terminal Emulator
+bindsym $super+Return exec $preferredTerminalEmulator
+
+# Rofi Launcher
+bindsym $super+d exec rofi -show drun
+
+# music keys {pulseaudio}
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +2%; notify-send 'Volume Up'"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -2%; notify-send 'Volume Down'"
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# brightness {light}
+bindsym XF86MonBrightnessUp exec "light -A 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "light -U 10; notify-send 'brightness down'"
+
+# music {moc}
+bindsym $super+XF86AudioPlay exec mocp -p;exec notify-send 'Music Player' 'Opened'
+bindsym XF86AudioPlay exec mocp -G;exec notify-send 'Music Player' 'Started'
+bindsym XF86AudioNext exec mocp -f;exec notify-send 'Music Player' 'Next'
+bindsym XF86AudioPrev exec mocp -r;exec notify-send 'Music Player' 'Previous'
+bindsym $alt+XF86AudioPlay exec mocp -s;exec notify-send 'Music Player' 'Stop'
+
+# Common Apps
+bindsym $super+F2 exec $preferredBrowser;focus
+bindsym $super+Control+Return exec $preferredFileManager;focus
+bindsym $super+Shift+v exec $preferredVideoPlayer;focus
+bindsym $super+F3 exec $preferredTextEditor;focus
+
+# Screen Capture & Print Screen
+bindsym $super+Print exec $preferredScreenShot
+bindsym Print exec --no-startup-id $preferredScreenShot
+
+#--------------------------------------------------------------------#
+#  Layout Focus && Toggle
+#--------------------------------------------------------------------#
+# focus
+focus_follows_mouse yes
+for_window [urgent=latest] focus
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $super+s layout stacking;exec notify-send 'Layout Changed' 'Stacking'
+bindsym $super+w layout tabbed;exec notify-send 'Layout Changed' 'Tabbed'
+bindsym $super+e layout toggle split;exec notify-send 'Layout Changed' 'Split'
+bindsym $super+Shift+space toggle floating;exec notify-send 'Layout Changed' 'Floating'
+
+# toggle fullScreen
+bindsym $super+f fullscreen toggle
+
+# toggle sticky
+bindsym $super+Shift+s sticky toggle
+
+# change focus between tiling / floating windows
+bindsym $super+space focus mode_toggle
+
+#--------------------------------------------------------------------#
+# workspace Focus && Movement && Rules
+#--------------------------------------------------------------------#
+# change focus
+bindsym $super+a focus parent
+bindsym $super+z focus child
+bindsym $super+Left focus left
+bindsym $super+Down focus down
+bindsym $super+Up focus up
+bindsym $super+Right focus right
+
+# move focused window
+bindsym $super+Shift+Left move left
+bindsym $super+Shift+Down move down
+bindsym $super+Shift+Up move up
+bindsym $super+Shift+Right move right
+
+#navigate workspaces next / previous
+bindsym $super+Ctrl+Right workspace next
+bindsym $super+Ctrl+Left workspace prev
+
+# switch workspace
+bindsym $super+1 workspace $ws1
+bindsym $super+2 workspace $ws2
+bindsym $super+3 workspace $ws3
+bindsym $super+4 workspace $ws4
+bindsym $super+5 workspace $ws5
+bindsym $super+6 workspace $ws6
+bindsym $super+7 workspace $ws7
+bindsym $super+8 workspace $ws8
+bindsym $super+9 workspace $ws9
+
+# move focused container to workspace
+bindsym $super+Shift+1 move container to workspace $ws1;exec notify-send 'Moved Container To' '$WS1'
+bindsym $super+Shift+2 move container to workspace $ws2;exec notify-send 'Moved Container To' '$ws2'
+bindsym $super+Shift+3 move container to workspace $ws3;exec notify-send 'Moved Container To' '$ws3'
+bindsym $super+Shift+4 move container to workspace $ws4;exec notify-send 'Moved Container To' '$ws4'
+bindsym $super+Shift+5 move container to workspace $ws5;exec notify-send 'Moved Container To' '$ws5'
+bindsym $super+Shift+6 move container to workspace $ws6;exec notify-send 'Moved Container To' '$ws6'
+bindsym $super+Shift+7 move container to workspace $ws7;exec notify-send 'Moved Container To' '$ws7'
+bindsym $super+Shift+8 move container to workspace $ws8;exec notify-send 'Moved Container To' '$ws8'
+
+# Move to workspace with focused container
+bindsym $alt+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $alt+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $alt+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $alt+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $alt+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $alt+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $alt+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $alt+Shift+8 move container to workspace $ws8; workspace $wp8
+
+#--------------------------------------------------------------------#
+# workspace preferences
+#--------------------------------------------------------------------#
+# workspace back and forth (with/without active container)
+workspace_auto_back_and_forth yes
+
+# Open applications in specific workspace
+assign [class="Thunar"] $ws2
+assign [class="Google-chrome"] $ws3
+assign [class="Code"] $ws4
+assign [class="vlc"] $ws5
+assign [class="libreoffice-startcenter"] $ws7
+assign [class="Lxappearance"] $ws9
+assign [class="Nitrogen"] $ws9
+assign [class="Nm-connection-editor"] $ws9
+assign [class="Grub-customizer"] $ws9
+
+#--------------------------------------------------------------------#
+# Bar {i3blocks}
+#--------------------------------------------------------------------#
 bar {
-        position top
-        font pango:Dejavu Sans Mono 9
-        status_command i3blocks -c $HOME/.config/i3/bar/topbar.conf
-        mode dock
-        workspace_buttons yes
-        separator_symbol "|"
-        workspace_min_width 30
-        strip_workspace_numbers yes
-        binding_mode_indicator yes
-        tray_output none
-# Bar Colors
- colors {
-        background $dark
+	position top
+    mode dock
+    status_command i3blocks -c $HOME/.config/i3/bar/topbar.conf
+    separator_symbol "|"
+    workspace_min_width 30
+    workspace_buttons yes
+    binding_mode_indicator yes
+    strip_workspace_numbers yes
+	font pango:Dejavu Sans Mono 9
+    tray_output none
+	colors {
+         background $dark
         statusline $light
         separator  $yellow
 
@@ -223,14 +221,14 @@ bar {
         focused_workspace  $yellow $green $dark
         inactive_workspace $dark $dark $blue
         urgent_workspace   $red $red $light
-    }
+		}
 }
 bar {
 	position bottom
 	tray_output primary
     tray_padding 0
     mode dock
-    separator_symbol "|"
+    separator_symbol ":"
 	status_command i3blocks -c $HOME/.config/i3/bar/bottombar.conf
     font pango:Dejavu Sans Mono 9
 	workspace_buttons no
@@ -238,20 +236,10 @@ bar {
 		background $dark
 	}
 }
-#####################################################
-#                   OTHER OPTIONS                   #
-#####################################################
-# Resize windows
-bindsym $alt+r mode "resize";exec notify-send 'Resize Mode' 'Active'
-mode "resize"{
-    bindsym $alt+KP_Subtract resize shrink width 5 px or 5 ppt
-    bindsym $alt+KP_Add resize grow width 5 px or 5 ppt
-    bindsym $alt+Up resize grow height 5 px or 5 ppt
-    bindsym $alt+Down resize shrink height 5 px or 5 ppt
-    bindsym Escape mode "default";exec notify-send 'Resize Mode' 'Disabled'
-}
 
-# Gaps config
+#--------------------------------------------------------------------#
+# i3-gaps
+#--------------------------------------------------------------------#
 smart_gaps on
 smart_borders on
 gaps inner 7
@@ -260,7 +248,7 @@ gaps outer 0
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $win+Shift+g mode "$mode_gaps"
+bindsym $super+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
@@ -293,6 +281,18 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-#############################################
-#                   THE END                 #
-############################################# -C.Murali Sree Krihna
+#--------------------------------------------------------------------#
+# Resize
+#--------------------------------------------------------------------#
+bindsym $alt+r mode "resize";exec notify-send 'Resize Mode' 'Active'
+mode "resize"{
+    bindsym $alt+KP_Subtract resize shrink width 5 px or 5 ppt
+    bindsym $alt+KP_Add resize grow width 5 px or 5 ppt
+    bindsym $alt+Up resize grow height 5 px or 5 ppt
+    bindsym $alt+Down resize shrink height 5 px or 5 ppt
+    bindsym Escape mode "default";exec notify-send 'Resize Mode' 'Disabled'
+}
+
+# ---------------------------------------- #
+#                   THE END
+# ---------------------------------------- # -Murali Sree Krihna.C
