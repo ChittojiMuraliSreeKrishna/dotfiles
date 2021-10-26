@@ -33,6 +33,7 @@ Plug 'emmetio/emmet'
 " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " Python
 Plug 'davidhalter/jedi-vim'

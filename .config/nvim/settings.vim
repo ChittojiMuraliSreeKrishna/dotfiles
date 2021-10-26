@@ -4,7 +4,6 @@ autocmd!
 " Colouring
 set t_co=256
 set winbl=10
-set termguicolors
 
 " ColorColumn
 set colorcolumn=80,100

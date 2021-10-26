@@ -1,136 +1,80 @@
-# Environment
+shell:
+  program: /bin/bash
+
 env:
   TERM: xterm-256color
 
 window:
   dimensions:
     columns: 100
-    lines: 85
+    line: 85
+
+  position:
+    x: 0
+    y: 0
+
   padding:
     x: 0
     y: 0
 
   dynamic_padding: true
   decorations: none
-  startup_mode: Windowed
+  title: knowledge
 
-# Window title
-  title: Alacritty
-
-  class:
-    instance: Alacritty
-    general: Alacritty
-
-# scrolling
 scrolling:
-  history: 10000
-  multiplier: 3
+  history: 5000
+  multiplier: 5
   auto_scroll: true
 
-# tabspaces
-tabspaces: 4
-
-# Font configuration
 font:
-  # Normal font face
   normal:
-    family: monospace
-    style: Regular
-  # Bold font face
+    family: Iosevka Nerd Font
+  
   bold:
-    family: monospace
-    style: Bold
+    family: Iosevka Nerd Font
 
-  # Italic font face
   italic:
-    family: monospace
-    style: Italic
+    family: Iosevka Nerd Font
 
-  # Bold italic font face
   bold_italic:
-    family: monospace
-    style: Bold Italic
+    family: Iosevka Nerd Font
+  
   size: 10.0
 
-  # Offset
   offset:
-    x: 0
-    y: 1
-  glyph_offset:
     x: 0
     y: 0
 
+tabspaces: 4
+
+# If `true`, bold text is drawn using the bright color variants.
 use_thin_strokes: true
+
 draw_bold_text_with_bright_colors: true
 
-# Colors (Gruvbox dark)
-colors:
-  cursor:
-    text: '#282828'
-    cursor: '#cc241d'
+#color (dracula theme)
+import:
+   - ~/.config/alacritty/dracula.yml
 
-  selection:
-    text: '#bbc2cf'
+background_opacity: 0.75
 
-  primary:
-    hard contrast: background = '0x1d2021'
-    background: "0x1d2021"
-    soft contrast: background = '0x32302f'
-    foreground: "0xfbf1c7"
+cursor:
+  style:
+    shape: Block
+    blinking: On
 
-  # Normal colors
-  normal:
-    black: "0x282828"
-    red: "0xcc241d"
-    green: "0x98971a"
-    yellow: "0xd79921"
-    blue: "0x458588"
-    magenta: "0xb16286"
-    cyan: "0x689d6a"
-    white: "0xa89984"
+  thickness: 0.20
 
-  # Bright colors
-  bright:
-    black: "0x928374"
-    red: "0xfb4934"
-    green: "0xb8bb26"
-    yellow: "0xfabd2f"
-    blue: "0x83a598"
-    magenta: "0xd3869b"
-    cyan: "0x8ec07c"
-    white: "0xebdbb2"
-
-    indexed_colors: []
+live_config_reload: true
 
 visual_bell:
   animation: EaseOutExpo
   duration: 1
   color: '#fbf1c7'
 
-# Background opacity
-background_opacity: 0.9
-
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: false
-
-dynamic_title: true
-
-mouse:
-  hide_when_typing: false
-
-cursor:
-  style: Block
-  unfocused_hollow: true
-
-live_config_reload: true
-
-launcher:
-      program: xdg-open
-      args: []
-
-shell:
-  program: /bin/bash
 
 key_bindings:
     # (Windows, Linux, and BSD only)
