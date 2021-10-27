@@ -1,0 +1,138 @@
+#----------#
+# App Keys
+#----------#
+
+# Terminal
+super + Return
+    alacritty
+
+# Browser
+super + F2
+    google-chrome-stable
+
+# Code Editor
+super + F3
+    code
+
+# Kill Picom
+super + p
+    killall picom
+
+# Menu Launcher
+super + d
+    rofi -show drun
+
+# sxhkd reload
+super + c
+    pkill -USR1 -x sxhkd
+
+# Filemanager
+super + ctrl + Return
+    pcmanfm
+
+# Exit
+alt + Escape
+    ~/.config/bspwm/powermenu.sh
+
+#--------------------#
+# Window manager keys
+#--------------------#
+
+super + shift + {q,r}
+    bspc {quit, wm -r}
+
+super + shift + c
+    bspc node -{c,k}
+
+super + m
+    bspc desktop -l next
+
+super + y
+    bspc node newest.marked.local -n newest.!automatic.local
+
+super + g
+    bspc node -s biggest.window
+
+#---------------------#
+# State
+#---------------------#
+
+super + {t,shift + t,s,f}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+super + ctrl + {m,x,y,z}
+    bspc node -g {marked,locked,sticky,private}
+
+#--------------------#
+# Focus/Swap
+#--------------------#
+
+super + {_,shift + }{Left,Down,Up,Right}
+    bspc node -{f,s} {west,south,north,east}
+
+super + {p,b,comma,period}
+    bspc node -f @{parent,brother,first,second}
+
+super + {_,shift + }w
+    bspc node -f {next,prev}.local.!hidden.window
+
+super + bracket{left,right}
+    bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+#
+
+# preselect the direction
+super + ctrl + {Left,Down,Up,Right}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+
+# Media Keys
+XF86AudioRaiseVolume
+    pactl set-sink-volume 0 +2%
+
+XF86AudioLowerVolume
+    pactl set-sink-volume 0 -2%
+
+XF86AudioMute
+    pactl set-sink-mute 0 toggle
+
+XF86AudioPlay
+    mocp -p
+
+XF86AudioNext
+    mocp -f
+
+XF86AudioPrev
+    mocp -r
+
+super + XF86AudioPlay
+    mocp -s
+
