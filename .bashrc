@@ -10,6 +10,7 @@ set -o notify
 set -o noclobber
 set -o ignoreeof
 
+
 shopt -s autocd
 shopt -s cdspell
 shopt -s checkhash
@@ -17,26 +18,56 @@ shopt -s cdable_vars
 shopt -s checkwinsize
 shopt -s sourcepath
 
-PS1='|(\u)\A{\W}|:\$ '
+FMT_BOLD="\[\e[1m\]"
+FMT_DIM="\[\e[2m\]"
+FMT_RESET="\[\e[0m\]"
+FMT_UNBOLD="\[\e[22m\]"
+FMT_UNDIM="\[\e[22m\]"
+FG_BLACK="\[\e[30m\]"
+FG_BLUE="\[\e[34m\]"
+FG_CYAN="\[\e[36m\]"
+FG_GREEN="\[\e[32m\]"
+FG_GREY="\[\e[37m\]"
+FG_MAGENTA="\[\e[35m\]"
+FG_RED="\[\e[31m\]"
+FG_WHITE="\[\e[97m\]"
+FG_YELLOW="\[\e[33m\]"
 
+export PS1=\
+"\n${FG_BLUE}╭─${FG_WHITE}| ${FG_RED}${FMT_BOLD}\u ${FMT_UNBOLD}${FG_WHITE}\A "\
+"\$(git branch 2> /dev/null | grep '^*' | colrm 1 2 | xargs -I BRANCH echo -n \"${FG_YELLOW} BRANCH ${FMT_RESET}\")"\
+"| ${FG_WHITE}${FG_GREEN}\w${FG_WHITE}"\
+"\n${FG_BLUE}╰▶${FG_CYAN} ${FMT_RESET}"
+
+# Common Alias 
 alias ls='ls --color=auto'
 alias ll='ls -l --color=auto'
 alias la='ls -al --color=auto'
 alias ..='cd ..'
-alias java='mkdir -p $HOME/Documents/Codes/java && cd $HOME/Documents/Codes/java'
-alias javaScript='mkdir -p $HOME/Documents/Codes/javaScript && cd $HOME/Documents/Codes/javaScript'
-alias Python='mkdir -p $HOME/Documents/Codes/Python &&  cd $HOME/Documents/Codes/Python'
-alias gitHub='mkdir -p $HOME/GitHub && cd $HOME/Documents/GitHub'
 
-# git
-alias gs='git status'
-alias gc='git commit'
-alias ga='git add'
-alias gaa='git add --all'
-alias gb='git branch'
-alias gp='git push -U origin main'
+# React Alias
+alias nstart='npm start'
+alias nbuild='npm run build'
+alias neject='npm run eject'
 
-# bash
+# React native Alias
+alias rstart='npx react-native start'
+alias rrun='npx react-native run-android'
+alias rbuild='npx react-native run-android --variant=release'
+alias gclen='cd android && ./gradlew clean'
+
+# Django Alias
+alias dcreate='django-admin startproject'
+alias dstart='python3 manage.py startapp'
+alias drun='python3 manage.py runserver'
+alias dmigrations='python3 manage.py makemigrations'
+alias dmigrate='python3 manage.py migrate'
+alias dsuper='python3 manage.py createsuperuser'
+alias dstat='python3 manage.py stats'
+
+# Bash Alias
 alias editbash='nvim $HOME/.bashrc'
 alias bashsrc='source $HOME/.bashrc'
 alias debug='set -o nounset; set -o xtrace'
+
+
