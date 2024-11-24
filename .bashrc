@@ -4,6 +4,14 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+#!/usr/bin/env bash
+
+
+[ -r "$HOME/.bash_prompt" ] && [ -f "$HOME/.bash_prompt" ] && source $HOME/.bash_prompt;
+[ -r "$HOME/.bash_local" ] && [ -f "$HOME/.bash_local" ] && source $HOME/.bash_local;
+[ -r "$HOME/.bash_aliases" ] && [ -f "$HOME/.bash_aliases" ] && source $HOME/.bash_aliases;
+[ -r "$HOME/.bash_functions" ] && [ -f "$HOME/.bash_functions" ] && source $HOME/.bash_functions;
+
 
 ulimit -S -c 0
 set -o notify
@@ -71,3 +79,5 @@ alias bashsrc='source $HOME/.bashrc'
 alias debug='set -o nounset; set -o xtrace'
 
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
